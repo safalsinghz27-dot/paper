@@ -1,11 +1,262 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { TOOLS } from '../data/tools';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="PaperRepair | Free Online PDF, Word, Excel & Image Converters" description="Free online tools to convert and extract PDF, Word, Excel, CSV, text and image files. Text to PDF, PDF to Text, Image to PDF and more.">
+  <Header />
+
+  <!-- Hero Section (Preserved exact H1 and subtitle as required) -->
+  <section class="relative bg-white pt-24 pb-20 px-6 border-b border-[#DFE6F2] overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-gradient-to-r from-[#173EA5]/10 via-[#4778F5]/10 to-[#7928ca]/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
+
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF0FF] border border-[#DFE6F2] text-xs font-mono text-[#173EA5]">
+        <span class="w-2 h-2 rounded-full bg-[#173EA5] animate-pulse"></span>
+        14 Free Document Utilities
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-semibold tracking-tighter text-[#172033] leading-[1.08]">
+        Free Online PDF, Word, Excel & Image Converter Tools
+      </h1>
+
+      <p class="text-base sm:text-lg text-[#475569] max-w-2xl mx-auto leading-relaxed">
+        Convert and extract PDF, Word, Excel, CSV, text and image files in a few clicks.
+      </p>
+
+      <!-- Search Bar -->
+      <div class="max-w-2xl mx-auto pt-6">
+        <div class="relative flex items-center bg-[#F5F8FF] border border-[#DFE6F2] rounded-2xl shadow-sm hover:border-[#173EA5] transition-all focus-within:border-[#173EA5] focus-within:ring-4 focus-within:ring-[#173EA5]/10">
+          <svg class="absolute left-5 w-5 h-5 text-[#64748b]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input
+            type="text"
+            id="hero-search"
+            placeholder="Search for any tool (e.g. PDF to Excel, Text to PDF, JPG to Word)..."
+            class="w-full bg-transparent pl-14 pr-4 py-4 text-sm sm:text-base text-[#172033] placeholder-[#64748b] focus:outline-none"
+          />
+          <a href="/tools" class="mr-2 px-6 py-3 rounded-xl bg-[#173EA5] text-white text-xs sm:text-sm font-medium hover:bg-[#4778F5] transition-colors shrink-0">
+            Search
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filter Tabs & Tool Grid -->
+  <section class="py-20 px-6 bg-[#F5F8FF] min-h-[800px]">
+    <div class="max-w-7xl mx-auto space-y-12">
+
+      <div class="text-center">
+        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#172033]">Select a Document Tool</h2>
+        <p class="text-sm text-[#475569] mt-2">All 14 utilities organized by category.</p>
+      </div>
+
+      <!-- Category Tabs (All, PDF Tools, Image Tools, Document Converter) -->
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <button class="hub-tab active px-6 py-3 rounded-full text-sm font-medium bg-[#173EA5] text-white transition-all shadow-xs" data-cat="all">
+          All Tools
+        </button>
+        <button class="hub-tab px-6 py-3 rounded-full text-sm font-medium bg-white border border-[#DFE6F2] text-[#172033] hover:text-[#173EA5] hover:border-[#173EA5] transition-all shadow-2xs" data-cat="PDF Tools">
+          PDF Tools (5)
+        </button>
+        <button class="hub-tab px-6 py-3 rounded-full text-sm font-medium bg-white border border-[#DFE6F2] text-[#172033] hover:text-[#173EA5] hover:border-[#173EA5] transition-all shadow-2xs" data-cat="Image Tools">
+          Image Tools (2)
+        </button>
+        <button class="hub-tab px-6 py-3 rounded-full text-sm font-medium bg-white border border-[#DFE6F2] text-[#172033] hover:text-[#173EA5] hover:border-[#173EA5] transition-all shadow-2xs" data-cat="Document Converter">
+          Document Converter (7)
+        </button>
+      </div>
+
+      <!-- Tool Cards Grid (4 columns on desktop, 3 on tablet, 2 compact columns on mobile) -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="hub-grid">
+        {TOOLS.map((tool) => {
+          // Category-specific subtle tints & icon colors
+          const isPdf = tool.category === 'PDF Tools';
+          const isImg = tool.category === 'Image Tools';
+          const tintBg = isPdf ? 'bg-[#EAF0FF]' : isImg ? 'bg-[#F1ECFF]' : 'bg-[#E8F4FA]';
+          const iconColor = isPdf ? 'text-[#173EA5]' : isImg ? 'text-[#7928ca]' : 'text-[#0284c7]';
+          const badgeColor = isPdf ? 'bg-[#173EA5]/10 text-[#173EA5]' : isImg ? 'bg-[#7928ca]/10 text-[#7928ca]' : 'bg-[#0284c7]/10 text-[#0284c7]';
+
+          return (
+            <a
+              href={`/tools/${tool.slug}`}
+              class="hub-card group bg-white border border-[#DFE6F2] rounded-2xl p-6 hover:border-[#173EA5] hover:shadow-xl hover:shadow-[#173EA5]/5 transition-all flex flex-col justify-between"
+              data-category={tool.category}
+              data-name={tool.name.toLowerCase()}
+              data-desc={tool.shortDesc.toLowerCase()}
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class={`w-10 h-10 rounded-xl ${tintBg} ${iconColor} flex items-center justify-center font-bold text-sm`}>
+                    {tool.name.charAt(0)}
+                  </div>
+                  <span class={`inline-flex px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold ${badgeColor}`}>
+                    {tool.category}
+                  </span>
+                </div>
+                <h3 class="text-base font-semibold text-[#172033] mb-2 group-hover:text-[#173EA5] transition-colors">{tool.name}</h3>
+                <p class="text-xs text-[#475569] line-clamp-2 leading-relaxed">{tool.shortDesc}</p>
+              </div>
+              <div class="mt-6 pt-3 border-t border-[#DFE6F2]/60 flex items-center justify-between text-xs font-mono text-[#64748b]">
+                <span class="text-[#4778F5] font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Launch →</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- Empty State -->
+      <div id="hub-empty" class="hidden text-center py-24">
+        <h3 class="text-xl font-semibold text-[#172033]">No matching document utilities found</h3>
+        <p class="text-sm text-[#64748b] mt-2">Try searching with a different keyword or category tab.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-24 px-6 bg-white border-t border-[#DFE6F2]">
+    <div class="max-w-5xl mx-auto space-y-16">
+      <div class="text-center max-w-xl mx-auto space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-[#172033]">How It Works</h2>
+        <p class="text-sm sm:text-base text-[#475569]">Get your documents converted in three effortless steps.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-[#F5F8FF] border border-[#DFE6F2] rounded-2xl p-8 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-[#173EA5] text-white font-mono text-base flex items-center justify-center font-bold">1</div>
+          <h3 class="text-xl font-semibold text-[#172033]">Select Utility</h3>
+          <p class="text-sm text-[#475569] leading-relaxed">Choose from our suite of 14 specialized PDF, image, and document conversion tools.</p>
+        </div>
+
+        <div class="bg-[#F5F8FF] border border-[#DFE6F2] rounded-2xl p-8 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-[#173EA5] text-white font-mono text-base flex items-center justify-center font-bold">2</div>
+          <h3 class="text-xl font-semibold text-[#172033]">Drop File or Text</h3>
+          <p class="text-sm text-[#475569] leading-relaxed">Upload your document or paste text directly. Processing runs instantly in your web browser.</p>
+        </div>
+
+        <div class="bg-[#F5F8FF] border border-[#DFE6F2] rounded-2xl p-8 space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-[#173EA5] text-white font-mono text-base flex items-center justify-center font-bold">3</div>
+          <h3 class="text-xl font-semibold text-[#172033]">Download Result</h3>
+          <p class="text-sm text-[#475569] leading-relaxed">Get your fully converted file or extracted output immediately with a single click.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-24 px-6 bg-[#F5F8FF] border-t border-[#DFE6F2]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-[#172033]">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-8">
+          <h3 class="text-lg font-semibold text-[#172033] mb-3">Are my documents private and secure?</h3>
+          <p class="text-sm sm:text-base text-[#475569] leading-relaxed">Yes. PaperRepair executes all conversions client-side inside your browser. Your files never touch a remote server.</p>
+        </div>
+
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-8">
+          <h3 class="text-lg font-semibold text-[#172033] mb-3">Is there any file size limit?</h3>
+          <p class="text-sm sm:text-base text-[#475569] leading-relaxed">Because processing happens in your browser, limits depend only on your device memory. Most standard documents and images process instantly.</p>
+        </div>
+
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-8">
+          <h3 class="text-lg font-semibold text-[#172033] mb-3">Do I need to install software or create an account?</h3>
+          <p class="text-sm sm:text-base text-[#475569] leading-relaxed">No installation or registration is needed. PaperRepair is completely free to use directly from any web browser.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST SECTION (Directly above the footer) -->
+  <section class="py-20 px-6 bg-white border-t border-[#DFE6F2] text-center">
+    <div class="max-w-4xl mx-auto space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-[#172033]">Free document tools for everyday work</h2>
+      <p class="text-sm sm:text-base text-[#475569] max-w-xl mx-auto leading-relaxed">
+        PaperRepair brings simple converters for PDF, Word, Excel, CSV, text and image files into one place.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+        <div class="bg-[#F5F8FF] border border-[#DFE6F2] rounded-2xl p-6 flex flex-col items-center space-y-2">
+          <div class="w-10 h-10 rounded-full bg-[#EAF0FF] text-[#173EA5] flex items-center justify-center font-bold">✓</div>
+          <span class="font-semibold text-[#172033] text-sm">Free to use</span>
+        </div>
+
+        <div class="bg-[#F5F8FF] border border-[#DFE6F2] rounded-2xl p-6 flex flex-col items-center space-y-2">
+          <div class="w-10 h-10 rounded-full bg-[#EAF0FF] text-[#173EA5] flex items-center justify-center font-bold">🔒</div>
+          <span class="font-semibold text-[#172033] text-sm">No sign-up required</span>
+        </div>
+
+        <div class="bg-[#F5F8FF] border border-[#DFE6F2] rounded-2xl p-6 flex flex-col items-center space-y-2">
+          <div class="w-10 h-10 rounded-full bg-[#EAF0FF] text-[#173EA5] flex items-center justify-center font-bold">💻</div>
+          <span class="font-semibold text-[#172033] text-sm">Processed in your browser</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+
+  <script>
+    const searchInput = document.getElementById('hero-search') as HTMLInputElement;
+    const hubTabs = document.querySelectorAll('.hub-tab');
+    const hubCards = document.querySelectorAll('.hub-card');
+    const hubEmpty = document.getElementById('hub-empty');
+
+    let activeCat = 'all';
+    let queryText = '';
+
+    function filterHub() {
+      let count = 0;
+      hubCards.forEach((card) => {
+        const el = card as HTMLElement;
+        const cat = el.getAttribute('data-category');
+        const name = el.getAttribute('data-name') || '';
+        const desc = el.getAttribute('data-desc') || '';
+
+        const matchCat = activeCat === 'all' || cat === activeCat;
+        const matchQuery = !queryText || name.includes(queryText) || desc.includes(queryText);
+
+        if (matchCat && matchQuery) {
+          el.style.display = 'flex';
+          count++;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      if (hubEmpty) {
+        if (count === 0) {
+          hubEmpty.classList.remove('hidden');
+        } else {
+          hubEmpty.classList.add('hidden');
+        }
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        queryText = (e.target as HTMLInputElement).value.toLowerCase();
+        filterHub();
+      });
+    }
+
+    hubTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        hubTabs.forEach(t => {
+          t.classList.remove('bg-[#173EA5]', 'text-white', 'shadow-xs');
+          t.classList.add('bg-white', 'border', 'border-[#DFE6F2]', 'text-[#172033]', 'shadow-2xs');
+        });
+        tab.classList.remove('bg-white', 'border', 'border-[#DFE6F2]', 'text-[#172033]', 'shadow-2xs');
+        tab.classList.add('bg-[#173EA5]', 'text-white', 'shadow-xs');
+
+        activeCat = tab.getAttribute('data-cat') || 'all';
+        filterHub();
+      });
+    });
+  </script>
 </Layout>

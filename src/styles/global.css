@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #173EA5;
+  --color-accent: #4778F5;
+  --color-tint: #EAF0FF;
+  --color-background: #F5F8FF;
+  --color-card: #FFFFFF;
+  --color-text: #172033;
+  --color-border: #DFE6F2;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: 'Geist', sans-serif;
+  }
+}

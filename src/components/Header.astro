@@ -1,0 +1,68 @@
+---
+import { TOOLS } from '../data/tools';
+const { title = "Tool | PaperRepair", description = "Professional free document utility" } = Astro.props;
+---
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#DFE6F2]">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <div class="flex items-center gap-12">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-[#173EA5] text-white flex items-center justify-center font-mono font-bold text-base shadow-sm group-hover:scale-105 transition-transform">PR</div>
+        <div class="flex flex-col">
+          <span class="text-[#172033] font-semibold tracking-tight text-lg leading-tight">PaperRepair</span>
+          <span class="text-[10px] font-mono text-[#4778F5] uppercase tracking-widest font-semibold">Document Suite</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-2">
+        <a href="/tools" class="px-4 py-2 rounded-full text-sm font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">PDF Tools</a>
+        <a href="/tools" class="px-4 py-2 rounded-full text-sm font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">Image Tools</a>
+        <a href="/tools" class="px-4 py-2 rounded-full text-sm font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">Document Converter</a>
+        <a href="/tools" class="px-4 py-2 rounded-full text-sm font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">All Tools</a>
+
+        <!-- All Tools Mega Dropdown -->
+        <div class="relative group py-2">
+          <button class="px-4 py-2 rounded-full text-sm font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors inline-flex items-center gap-1.5">
+            <span>Explore</span>
+            <svg class="w-3.5 h-3.5 text-[#172033] group-hover:rotate-180 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+
+          <div class="absolute top-full left-0 w-96 bg-white border border-[#DFE6F2] rounded-3xl shadow-xl p-6 hidden group-hover:block transition-all z-50 mt-1">
+            <div class="space-y-4">
+              <div>
+                <div class="text-[11px] font-mono text-[#173EA5] uppercase tracking-wider font-bold mb-2">PDF Tools (5)</div>
+                <div class="grid grid-cols-2 gap-1">
+                  <a href="/tools/text-to-pdf" class="px-3 py-2 rounded-xl text-xs font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">Text to PDF</a>
+                  <a href="/tools/pdf-to-text" class="px-3 py-2 rounded-xl text-xs font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">PDF to Text</a>
+                  <a href="/tools/pdf-to-csv" class="px-3 py-2 rounded-xl text-xs font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">PDF to CSV</a>
+                  <a href="/tools/pdf-to-html" class="px-3 py-2 rounded-xl text-xs font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">PDF to HTML</a>
+                  <a href="/tools/pdf-to-excel" class="px-3 py-2 rounded-xl text-xs font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">PDF to Excel</a>
+                </div>
+              </div>
+
+              <div>
+                <div class="text-[11px] font-mono text-[#7928ca] uppercase tracking-wider font-bold mb-2">Image Tools (2)</div>
+                <div class="grid grid-cols-2 gap-1">
+                  <a href="/tools/image-to-pdf" class="px-3 py-2 rounded-xl text-xs font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">Image to PDF</a>
+                  <a href="/tools/text-to-image" class="px-3 py-2 rounded-xl text-xs font-medium text-[#172033] hover:text-[#173EA5] hover:bg-[#F5F8FF] transition-colors">Text to Image</a>
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-[#DFE6F2]">
+                <a href="/tools" class="block px-3 py-2 rounded-xl text-xs font-bold text-[#173EA5] hover:bg-[#F5F8FF] transition-colors text-center">View All 14 Utilities →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="/tools" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#173EA5] text-white text-sm font-medium hover:bg-[#4778F5] transition-all shadow-sm">
+        All Tools
+      </a>
+      <a href="/tools/text-to-pdf" class="hidden sm:inline-flex items-center justify-center px-4 py-2.5 rounded-xl border border-[#DFE6F2] bg-white text-[#172033] text-sm font-medium hover:border-[#173EA5] transition-all shadow-2xs">
+        Quick PDF
+      </a>
+    </div>
+  </div>
+</header>

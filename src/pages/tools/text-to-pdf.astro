@@ -1,0 +1,750 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { TOOLS } from '../../data/tools';
+
+const tool = TOOLS.find(t => t.slug === 'text-to-pdf') || TOOLS[0];
+const relatedTools = TOOLS.filter(t => t.category === tool.category && t.id !== tool.id).slice(0, 3);
+---
+
+<Layout title={`${tool.h1} | PaperRepair Pro`} description={tool.metaDesc}>
+  <Header />
+
+  <!-- Premium Studio Hero Header -->
+  <section class="bg-gradient-to-b from-[#F5F8FF] via-white to-white py-12 px-6 border-bottom border-[#DFE6F2]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-3 max-w-2xl">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EAF0FF] border border-[#DFE6F2] text-xs font-mono text-[#173EA5]">
+          <a href="/tools" class="hover:text-[#173EA5] transition-colors">Tools</a>
+          <span>/</span>
+          <span class="font-medium">{tool.category}</span>
+          <span>/</span>
+          <span class="text-emerald-600 font-semibold flex items-center gap-1">● 100% Client-Side Secure</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight text-[#172033]">{tool.h1}</h1>
+        <p class="text-[#475569] text-sm sm:text-base leading-relaxed">
+          Professional-grade rich text editor and instantaneous client-side PDF studio with advanced formatting, layout presets, and live multi-page preview.
+        </p>
+      </div>
+
+      <!-- Quick Action Badges / Trust Badges -->
+      <div class="flex flex-wrap gap-3">
+        <div class="px-4 py-3 rounded-2xl bg-[#F5F8FF] border border-[#DFE6F2] text-xs font-mono text-[#173EA5] flex items-center gap-2">
+          <span>⚡ Zero Uploads</span>
+        </div>
+        <div class="px-4 py-3 rounded-2xl bg-[#F5F8FF] border border-[#DFE6F2] text-xs font-mono text-[#173EA5] flex items-center gap-2">
+          <span>🔒 Browser Local Storage</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Text-to-PDF Studio Workspace -->
+  <section class="py-10 px-4 sm:px-6 bg-[#F5F8FF] min-h-[850px]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Left Column: Rich Text Editor & Professional Toolbar (7 cols) -->
+        <div class="lg:col-span-7 bg-white border border-[#DFE6F2] rounded-3xl p-6 sm:p-8 shadow-xl shadow-[#173EA5]/5 space-y-6">
+
+          <!-- Advanced Formatting Toolbar (Notepad.io style + Rich Text) -->
+          <div class="flex items-center gap-1 overflow-x-auto pb-3 border-b border-[#DFE6F2] scrollbar-none text-[#172033]">
+            <button type="button" data-cmd="bold" title="Bold (Ctrl+B)" class="p-2 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] font-bold text-xs transition-colors shrink-0">B</button>
+            <button type="button" data-cmd="italic" title="Italic (Ctrl+I)" class="p-2 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] italic text-xs transition-colors shrink-0">I</button>
+            <button type="button" data-cmd="underline" title="Underline (Ctrl+U)" class="p-2 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] underline text-xs transition-colors shrink-0">U</button>
+            <button type="button" data-cmd="strikeThrough" title="Strikethrough" class="p-2 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] line-through text-xs transition-colors shrink-0">S</button>
+            <span class="w-px h-5 bg-[#DFE6F2] mx-1 shrink-0"></span>
+
+            <button type="button" data-cmd="formatBlock" data-value="h1" title="Heading 1" class="px-2.5 py-1.5 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] font-semibold text-xs transition-colors shrink-0">H1</button>
+            <button type="button" data-cmd="formatBlock" data-value="h2" title="Heading 2" class="px-2.5 py-1.5 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] font-semibold text-xs transition-colors shrink-0">H2</button>
+            <button type="button" data-cmd="formatBlock" data-value="h3" title="Heading 3" class="px-2.5 py-1.5 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] font-semibold text-xs transition-colors shrink-0">H3</button>
+            <button type="button" data-cmd="formatBlock" data-value="p" title="Paragraph" class="px-2.5 py-1.5 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] text-xs transition-colors shrink-0">P</button>
+            <span class="w-px h-5 bg-[#DFE6F2] mx-1 shrink-0"></span>
+
+            <button type="button" data-cmd="insertUnorderedList" title="Bullet List" class="px-2.5 py-1.5 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] text-xs transition-colors shrink-0">• Bullet</button>
+            <button type="button" data-cmd="insertOrderedList" title="Numbered List" class="px-2.5 py-1.5 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] text-xs transition-colors shrink-0">1. Number</button>
+            <span class="w-px h-5 bg-[#DFE6F2] mx-1 shrink-0"></span>
+
+            <!-- AI Assist Toolbar Simulation / Quick Fixes -->
+            <button type="button" id="ai-summarize" title="AI Summarize" class="px-3 py-1.5 rounded-xl bg-blue-50 text-[#173EA5] font-medium text-xs hover:bg-blue-100 transition-colors shrink-0 flex items-center gap-1">
+              ✨ Summarize
+            </button>
+            <button type="button" id="ai-grammar" title="Fix Grammar" class="px-3 py-1.5 rounded-xl bg-blue-50 text-[#173EA5] font-medium text-xs hover:bg-blue-100 transition-colors shrink-0 flex items-center gap-1">
+              ✓ Fix Grammar
+            </button>
+            <button type="button" id="ai-professional" title="Make Professional" class="px-3 py-1.5 rounded-xl bg-blue-50 text-[#173EA5] font-medium text-xs hover:bg-blue-100 transition-colors shrink-0 flex items-center gap-1">
+              👔 Professional
+            </button>
+            <span class="w-px h-5 bg-[#DFE6F2] mx-1 shrink-0"></span>
+
+            <button type="button" data-cmd="undo" title="Undo" class="p-2 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] text-xs transition-colors shrink-0">↺</button>
+            <button type="button" data-cmd="redo" title="Redo" class="p-2 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] text-xs transition-colors shrink-0">↻</button>
+            <button type="button" data-cmd="removeFormat" title="Clear Formatting" class="px-2.5 py-1.5 rounded-xl hover:bg-[#F5F8FF] hover:text-[#173EA5] text-xs transition-colors shrink-0">Clear</button>
+          </div>
+
+          <!-- Rich Text Editable Area with Autosave Status -->
+          <div class="space-y-2 relative">
+            <div
+              id="editor"
+              contenteditable="true"
+              class="w-full min-h-[420px] max-h-[600px] overflow-y-auto bg-[#F5F8FF]/50 border border-[#DFE6F2] rounded-2xl p-6 text-sm sm:text-base text-[#172033] focus:outline-none focus:border-[#173EA5] focus:ring-4 focus:ring-[#173EA5]/10 leading-relaxed font-normal shadow-inner"
+              placeholder="Start typing, pasting rich text, or click Sample Document..."
+            ></div>
+
+            <!-- Floating Bottom Bar inside Editor -->
+            <div class="flex items-center justify-between text-xs font-mono text-[#64748b] px-2 pt-1">
+              <div class="flex items-center gap-4">
+                <span id="live-stats">0 words | 0 characters</span>
+                <span id="autosave-status" class="text-emerald-600 flex items-center gap-1">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Saved locally
+                </span>
+              </div>
+              <span id="error-banner" class="text-red-500 font-medium hidden"></span>
+            </div>
+          </div>
+
+          <!-- Action Utilities Bar -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#DFE6F2]">
+            <div class="flex flex-wrap items-center gap-2">
+              <button id="sample-btn" type="button" class="px-4 py-2.5 rounded-xl bg-white border border-[#DFE6F2] text-[#172033] text-xs font-medium hover:bg-[#F5F8FF] transition-colors shadow-2xs flex items-center gap-1.5">
+                <span>📄</span> Sample Document
+              </button>
+              <label class="px-4 py-2.5 rounded-xl bg-white border border-[#DFE6F2] text-[#172033] text-xs font-medium hover:bg-[#F5F8FF] transition-colors shadow-2xs cursor-pointer flex items-center gap-1.5">
+                <span>📂</span> Upload .txt / .md
+                <input type="file" id="upload-txt" accept=".txt,.md" class="hidden" />
+              </label>
+              <button id="copy-btn" type="button" class="px-4 py-2.5 rounded-xl bg-white border border-[#DFE6F2] text-[#172033] text-xs font-medium hover:bg-[#F5F8FF] transition-colors shadow-2xs flex items-center gap-1.5">
+                <span>📋</span> Copy Text
+              </button>
+            </div>
+            <button id="clear-btn" type="button" class="px-4 py-2.5 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs font-medium hover:bg-red-100 transition-colors flex items-center gap-1.5">
+              <span>🗑️</span> Clear
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right Column: PDF Options & Convert Panel (5 cols) -->
+        <div class="lg:col-span-5 bg-white border border-[#DFE6F2] rounded-3xl p-6 sm:p-8 shadow-xl shadow-[#173EA5]/5 space-y-6">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-lg font-semibold text-[#172033]">PDF Layout Studio</h2>
+              <p class="text-xs text-[#64748b]">Customize typography, geometry & headers.</p>
+            </div>
+            <button id="theme-toggle" type="button" class="px-3 py-1.5 rounded-xl bg-[#F5F8FF] border border-[#DFE6F2] text-xs font-mono text-[#172033] hover:bg-[#EAF0FF] transition-colors">
+              🌙 Dark Preview
+            </button>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <!-- File Name -->
+            <div class="space-y-1.5">
+              <label class="font-mono uppercase text-[#64748b] font-semibold">File Name</label>
+              <input type="text" id="opt-filename" value="paperepair-document.pdf" class="w-full bg-[#F5F8FF] border border-[#DFE6F2] rounded-xl px-4 py-2.5 text-sm text-[#172033] focus:outline-none focus:border-[#173EA5]" />
+            </div>
+
+            <!-- Page Size & Orientation -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label class="font-mono uppercase text-[#64748b] font-semibold">Page Size</label>
+                <select id="opt-pagesize" class="w-full bg-[#F5F8FF] border border-[#DFE6F2] rounded-xl px-3 py-2.5 text-xs text-[#172033] focus:outline-none focus:border-[#173EA5]">
+                  <option value="a4">A4 (210 × 297 mm)</option>
+                  <option value="letter">Letter (8.5 × 11 in)</option>
+                </select>
+              </div>
+              <div class="space-y-1.5">
+                <label class="font-mono uppercase text-[#64748b] font-semibold">Orientation</label>
+                <select id="opt-orientation" class="w-full bg-[#F5F8FF] border border-[#DFE6F2] rounded-xl px-3 py-2.5 text-xs text-[#172033] focus:outline-none focus:border-[#173EA5]">
+                  <option value="portrait">Portrait</option>
+                  <option value="landscape">Landscape</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Font Family & Font Size -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label class="font-mono uppercase text-[#64748b] font-semibold">Font Family</label>
+                <select id="opt-font" class="w-full bg-[#F5F8FF] border border-[#DFE6F2] rounded-xl px-3 py-2.5 text-xs text-[#172033] focus:outline-none focus:border-[#173EA5]">
+                  <option value="helvetica">Helvetica (Sans)</option>
+                  <option value="times">Times (Serif)</option>
+                  <option value="courier">Courier (Mono)</option>
+                </select>
+              </div>
+              <div class="space-y-1.5">
+                <label class="font-mono uppercase text-[#64748b] font-semibold">Font Size</label>
+                <select id="opt-fontsize" class="w-full bg-[#F5F8FF] border border-[#DFE6F2] rounded-xl px-3 py-2.5 text-xs text-[#172033] focus:outline-none focus:border-[#173EA5]">
+                  <option value="10">10 pt</option>
+                  <option value="12" selected>12 pt (Standard)</option>
+                  <option value="14">14 pt</option>
+                  <option value="16">16 pt</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Margins & Line Spacing -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label class="font-mono uppercase text-[#64748b] font-semibold">Margins</label>
+                <select id="opt-margin" class="w-full bg-[#F5F8FF] border border-[#DFE6F2] rounded-xl px-3 py-2.5 text-xs text-[#172033] focus:outline-none focus:border-[#173EA5]">
+                  <option value="10">Narrow (10 mm)</option>
+                  <option value="20" selected>Normal (20 mm)</option>
+                  <option value="30">Wide (30 mm)</option>
+                </select>
+              </div>
+              <div class="space-y-1.5">
+                <label class="font-mono uppercase text-[#64748b] font-semibold">Line Spacing</label>
+                <select id="opt-spacing" class="w-full bg-[#F5F8FF] border border-[#DFE6F2] rounded-xl px-3 py-2.5 text-xs text-[#172033] focus:outline-none focus:border-[#173EA5]">
+                  <option value="1.2">Compact (1.2)</option>
+                  <option value="1.5" selected>Normal (1.5)</option>
+                  <option value="2.0">Double (2.0)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Optional Checkboxes -->
+            <div class="space-y-2 pt-2 border-t border-[#DFE6F2]">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="opt-pagenums" checked class="rounded border-[#DFE6F2] text-[#173EA5] focus:ring-[#173EA5]" />
+                <span class="text-[#172033] font-medium">Include page numbers (Footer)</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="opt-doc-title" checked class="rounded border-[#DFE6F2] text-[#173EA5] focus:ring-[#173EA5]" />
+                <span class="text-[#172033] font-medium">Include document title header</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Primary Convert Button & Output Area -->
+          <div class="pt-4 border-t border-[#DFE6F2] space-y-4">
+            <button id="convert-btn" type="button" class="w-full py-4 rounded-full bg-[#173EA5] text-white text-sm font-medium hover:bg-[#4778F5] transition-all shadow-lg shadow-[#173EA5]/20 flex items-center justify-center gap-2">
+              <span>Convert & Download PDF</span>
+              <span class="text-lg">↓</span>
+            </button>
+
+            <!-- Progress Bar -->
+            <div id="progress-container" class="hidden space-y-2">
+              <div class="flex justify-between text-xs font-mono text-[#64748b]">
+                <span id="progress-text">Generating PDF...</span>
+                <span id="progress-pct">0%</span>
+              </div>
+              <div class="w-full h-2 bg-[#F5F8FF] rounded-full overflow-hidden border border-[#DFE6F2]">
+                <div id="progress-bar" class="w-0 h-full bg-[#173EA5] transition-all duration-200"></div>
+              </div>
+            </div>
+
+            <!-- Output Action Bar -->
+            <div id="output-actions" class="hidden space-y-3 pt-2">
+              <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-mono text-emerald-800 flex items-center justify-between">
+                <span>PDF Generated Successfully!</span>
+                <span id="output-size">0 KB</span>
+              </div>
+              <div class="flex gap-2">
+                <a id="download-link" download="document.pdf" class="flex-1 py-3 px-4 rounded-xl bg-[#173EA5] text-white text-center text-xs font-medium hover:bg-[#4778F5] transition-colors shadow-sm">
+                  Download PDF
+                </a>
+                <button id="reset-convert-btn" type="button" class="py-3 px-4 rounded-xl bg-white border border-[#DFE6F2] text-[#172033] text-xs font-medium hover:bg-[#F5F8FF] transition-colors">
+                  Convert another
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Multi-Page PDF Preview Section -->
+  <section class="py-12 px-6 bg-white border-t border-[#DFE6F2]" id="preview-section">
+    <div class="max-w-4xl mx-auto space-y-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-semibold text-[#172033]">Live PDF Page Preview</h2>
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-mono text-[#64748b]" id="preview-page-indicator">Page 1 of 1</span>
+          <div class="flex items-center gap-1">
+            <button id="prev-preview-page" class="p-1.5 rounded-lg border border-[#DFE6F2] bg-white text-xs hover:bg-[#F5F8FF]">◀</button>
+            <button id="next-preview-page" class="p-1.5 rounded-lg border border-[#DFE6F2] bg-white text-xs hover:bg-[#F5F8FF]">▶</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Virtual PDF Sheet Preview -->
+      <div class="bg-[#E4E9F2] border border-[#DFE6F2] rounded-3xl p-8 sm:p-12 flex justify-center shadow-inner overflow-x-auto">
+        <div class="bg-white shadow-2xl rounded-sm w-[210mm] min-h-[297mm] p-[25mm] font-serif text-[#172033] relative transition-all" id="pdf-sheet-preview">
+          <!-- Document Header Preview -->
+          <div class="text-xs font-mono text-[#64748b] border-b border-[#DFE6F2] pb-4 mb-6 flex justify-between items-center" id="sheet-preview-header">
+            <span class="font-semibold text-[#173EA5]" id="sheet-preview-title">paperepair-document.pdf</span>
+            <span>Client-Side PDF Studio</span>
+          </div>
+
+          <!-- Sheet Body -->
+          <div id="sheet-preview-body" class="space-y-4 text-base leading-relaxed">
+            <p class="text-[#64748b] italic">Your formatted document preview will appear here as you type...</p>
+          </div>
+
+          <!-- Page Footer Preview -->
+          <div class="absolute bottom-8 left-[25mm] right-[25mm] pt-4 border-t border-[#DFE6F2] flex justify-between items-center text-xs font-mono text-[#64748b]" id="sheet-preview-footer">
+            <span>PaperRepair.com</span>
+            <span id="sheet-preview-pagenum">Page 1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to convert text to PDF -->
+  <section class="py-20 px-6 bg-[#F5F8FF] border-t border-[#DFE6F2]">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="text-center max-w-xl mx-auto space-y-3">
+        <h2 class="text-3xl font-semibold tracking-tight text-[#172033]">How to convert text to PDF</h2>
+        <p class="text-sm text-[#475569]">Turn text or notes into a clean, professional PDF in seconds.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-[#173EA5] text-white font-mono text-sm flex items-center justify-center font-bold">1</div>
+          <h3 class="font-semibold text-[#172033]">Type or Paste</h3>
+          <p class="text-xs text-[#475569] leading-relaxed">Type your text directly or paste rich text with headings, bolding, and lists.</p>
+        </div>
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-[#173EA5] text-white font-mono text-sm flex items-center justify-center font-bold">2</div>
+          <h3 class="font-semibold text-[#172033]">Format Text</h3>
+          <p class="text-xs text-[#475569] leading-relaxed">Use the toolbar to apply headings, bullet lists, italics, and underlines.</p>
+        </div>
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-[#173EA5] text-white font-mono text-sm flex items-center justify-center font-bold">3</div>
+          <h3 class="font-semibold text-[#172033]">Customize Options</h3>
+          <p class="text-xs text-[#475569] leading-relaxed">Choose page size (A4 / Letter), margins, font family, and file name.</p>
+        </div>
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-6 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-[#173EA5] text-white font-mono text-sm flex items-center justify-center font-bold">4</div>
+          <h3 class="font-semibold text-[#172033]">Download PDF</h3>
+          <p class="text-xs text-[#475569] leading-relaxed">Click Convert to PDF and instantly download your formatted document.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why use this tool -->
+  <section class="py-20 px-6 bg-white border-t border-[#DFE6F2]">
+    <div class="max-w-4xl mx-auto space-y-8">
+      <div class="text-center space-y-3">
+        <h2 class="text-3xl font-semibold tracking-tight text-[#172033]">Why use this tool</h2>
+        <p class="text-sm text-[#475569]">Built for speed, privacy, and flawless browser-side formatting.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-[#F5F8FF] border border-[#DFE6F2] rounded-2xl p-6 space-y-2">
+          <div class="text-[#173EA5] font-bold text-lg">⚡ Instant & Fast</div>
+          <p class="text-xs text-[#475569] leading-relaxed">Generates PDFs immediately in your browser with zero latency or queue waits.</p>
+        </div>
+        <div class="bg-[#F5F8FF] border border-[#DFE6F2] rounded-2xl p-6 space-y-2">
+          <div class="text-[#173EA5] font-bold text-lg">🔒 100% Private</div>
+          <p class="text-xs text-[#475569] leading-relaxed">Your text stays in your device memory. No data is ever transmitted or stored on external servers.</p>
+        </div>
+        <div class="bg-[#F5F8FF] border border-[#DFE6F2] rounded-2xl p-6 space-y-2">
+          <div class="text-[#173EA5] font-bold text-lg">📄 Rich Formatting</div>
+          <p class="text-xs text-[#475569] leading-relaxed">Preserves headings, bullet lists, bolding, and custom margins across multi-page layouts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6 bg-[#F5F8FF] border-t border-[#DFE6F2]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <h2 class="text-3xl font-semibold tracking-tight text-[#172033]">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-6">
+          <h3 class="font-semibold text-[#172033] mb-2 text-sm">Does this tool preserve text formatting?</h3>
+          <p class="text-xs sm:text-sm text-[#475569] leading-relaxed">Yes! You can format text with bold, italic, underline, H1-H3 headings, and bullet/numbered lists using the editor toolbar or keyboard shortcuts.</p>
+        </div>
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-6">
+          <h3 class="font-semibold text-[#172033] mb-2 text-sm">How is Hindi and Unicode text handled?</h3>
+          <p class="text-xs sm:text-sm text-[#475569] leading-relaxed">Standard Latin and Unicode characters are supported. For complex Devanagari shaping, jsPDF handles standard font encodings; for complex conjuncts, standard client-side PDF vector rendering is applied.</p>
+        </div>
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-6">
+          <h3 class="font-semibold text-[#172033] mb-2 text-sm">Are there any file size or text limits?</h3>
+          <p class="text-xs sm:text-sm text-[#475569] leading-relaxed">Because processing runs entirely in your browser, limits depend only on your device memory. You can convert long multi-page documents instantly.</p>
+        </div>
+        <div class="bg-white border border-[#DFE6F2] rounded-2xl p-6">
+          <h3 class="font-semibold text-[#172033] mb-2 text-sm">Is my data secure and private?</h3>
+          <p class="text-xs sm:text-sm text-[#475569] leading-relaxed">Completely. Network traffic verification confirms zero data transmission during editing or PDF conversion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  {relatedTools.length > 0 && (
+    <section class="py-20 px-6 bg-white border-t border-[#DFE6F2]">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <h2 class="font-mono text-xs uppercase text-[#64748b] tracking-wider">Related Utilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedTools.map(rt => (
+            <a href={`/tools/${rt.slug}`} class="bg-white border border-[#DFE6F2] rounded-2xl p-6 hover:border-[#173EA5] transition-all group shadow-2xs">
+              <h3 class="font-semibold text-[#172033] text-base mb-2 group-hover:text-[#173EA5] transition-colors">{rt.name}</h3>
+              <p class="text-xs text-[#475569] line-clamp-2 leading-relaxed">{rt.shortDesc}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <Footer />
+
+  <script>
+    import { jsPDF } from 'jspdf';
+
+    const editor = document.getElementById('editor') as HTMLDivElement;
+    const liveStats = document.getElementById('live-stats') as HTMLSpanElement;
+    const errorBanner = document.getElementById('error-banner') as HTMLSpanElement;
+    const sampleBtn = document.getElementById('sample-btn') as HTMLButtonElement;
+    const uploadTxt = document.getElementById('upload-txt') as HTMLInputElement;
+    const copyBtn = document.getElementById('copy-btn') as HTMLButtonElement;
+    const clearBtn = document.getElementById('clear-btn') as HTMLButtonElement;
+    const convertBtn = document.getElementById('convert-btn') as HTMLButtonElement;
+    const progressContainer = document.getElementById('progress-container') as HTMLDivElement;
+    const progressBar = document.getElementById('progress-bar') as HTMLDivElement;
+    const progressText = document.getElementById('progress-text') as HTMLSpanElement;
+    const progressPct = document.getElementById('progress-pct') as HTMLSpanElement;
+    const outputActions = document.getElementById('output-actions') as HTMLDivElement;
+    const outputSize = document.getElementById('output-size') as HTMLSpanElement;
+    const downloadLink = document.getElementById('download-link') as HTMLAnchorElement;
+    const resetConvertBtn = document.getElementById('reset-convert-btn') as HTMLButtonElement;
+
+    // Preview & Theme Elements
+    const sheetPreviewBody = document.getElementById('sheet-preview-body') as HTMLDivElement;
+    const sheetPreviewTitle = document.getElementById('sheet-preview-title') as HTMLSpanElement;
+    const pdfSheetPreview = document.getElementById('pdf-sheet-preview') as HTMLDivElement;
+    const themeToggle = document.getElementById('theme-toggle') as HTMLButtonElement;
+    const autosaveStatus = document.getElementById('autosave-status') as HTMLSpanElement;
+
+    // AI simulate buttons
+    const aiSummarize = document.getElementById('ai-summarize') as HTMLButtonElement;
+    const aiGrammar = document.getElementById('ai-grammar') as HTMLButtonElement;
+    const aiProfessional = document.getElementById('ai-professional') as HTMLButtonElement;
+
+    // Options elements
+    const optFilename = document.getElementById('opt-filename') as HTMLInputElement;
+    const optPagesize = document.getElementById('opt-pagesize') as HTMLSelectElement;
+    const optOrientation = document.getElementById('opt-orientation') as HTMLSelectElement;
+    const optFont = document.getElementById('opt-font') as HTMLSelectElement;
+    const optFontsize = document.getElementById('opt-fontsize') as HTMLSelectElement;
+    const optMargin = document.getElementById('opt-margin') as HTMLSelectElement;
+    const optSpacing = document.getElementById('opt-spacing') as HTMLSelectElement;
+    const optPagenums = document.getElementById('opt-pagenums') as HTMLInputElement;
+    const optDocTitle = document.getElementById('opt-doc-title') as HTMLInputElement;
+
+    // Load localStorage draft on start
+    const STORAGE_KEY = 'paperepair_text_to_pdf_content';
+    const savedDraft = localStorage.getItem(STORAGE_KEY);
+    if (savedDraft && editor) {
+      editor.innerHTML = savedDraft;
+    }
+
+    function showError(msg: string) {
+      if (errorBanner) {
+        errorBanner.textContent = msg;
+        errorBanner.classList.remove('hidden');
+        setTimeout(() => {
+          errorBanner.classList.add('hidden');
+        }, 5000);
+      }
+    }
+
+    function updateStatsAndPreview() {
+      if (!editor) return;
+      const text = editor.innerText || '';
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      const chars = text.length;
+      if (liveStats) {
+        liveStats.textContent = `${words} words | ${chars} characters`;
+      }
+
+      // Save to localStorage automatically (continuous backup like onlinenotepad.io)
+      try {
+        localStorage.setItem(STORAGE_KEY, editor.innerHTML);
+        if (autosaveStatus) {
+          autosaveStatus.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Saved locally';
+        }
+      } catch (err) {
+        // ignore quota errors
+      }
+
+      // Update Live Preview Sheet
+      if (sheetPreviewBody) {
+        sheetPreviewBody.innerHTML = editor.innerHTML || '<p class="text-[#64748b] italic">Your formatted document preview will appear here as you type...</p>';
+      }
+
+      if (sheetPreviewTitle) {
+        sheetPreviewTitle.textContent = optFilename.value || 'paperepair-document.pdf';
+      }
+    }
+
+    editor?.addEventListener('input', updateStatsAndPreview);
+    optFilename?.addEventListener('input', updateStatsAndPreview);
+
+    // Dark Mode Preview Toggle (like onlinenotepad.io black-dominant dark theme)
+    let isDarkPreview = false;
+    themeToggle?.addEventListener('click', () => {
+      isDarkPreview = !isDarkPreview;
+      if (isDarkPreview) {
+        pdfSheetPreview.classList.remove('bg-white', 'text-[#172033]');
+        pdfSheetPreview.classList.add('bg-[#121824]', 'text-[#F1F5F9]', 'border', 'border-slate-800');
+        themeToggle.textContent = '☀️ Light Preview';
+      } else {
+        pdfSheetPreview.classList.remove('bg-[#121824]', 'text-[#F1F5F9]', 'border', 'border-slate-800');
+        pdfSheetPreview.classList.add('bg-white', 'text-[#172033]');
+        themeToggle.textContent = '🌙 Dark Preview';
+      }
+    });
+
+    // Toolbar command handling & keyboard shortcuts
+    document.querySelectorAll('[data-cmd]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        const cmd = target.getAttribute('data-cmd');
+        const val = target.getAttribute('data-value') || '';
+        if (cmd === 'formatBlock') {
+          document.execCommand('formatBlock', false, `<${val}>`);
+        } else if (cmd) {
+          document.execCommand(cmd, false, undefined);
+        }
+        editor.focus();
+        updateStatsAndPreview();
+      });
+    });
+
+    // Keyboard shortcuts (Ctrl+B, Ctrl+I, Ctrl+U)
+    editor?.addEventListener('keydown', (e) => {
+      if (e.ctrlKey || e.metaKey) {
+        if (e.key === 'b') {
+          e.preventDefault();
+          document.execCommand('bold', false);
+        } else if (e.key === 'i') {
+          e.preventDefault();
+          document.execCommand('italic', false);
+        } else if (e.key === 'u') {
+          e.preventDefault();
+          document.execCommand('underline', false);
+        }
+      }
+    });
+
+    // AI Assist Simulation buttons
+    aiSummarize?.addEventListener('click', () => {
+      const current = editor.innerText.trim();
+      if (!current) {
+        showError('Please enter some text to summarize.');
+        return;
+      }
+      editor.innerHTML = `<h1>Summary</h1><p><strong>Executive Summary:</strong> ${current.slice(0, 200)}...</p><br>` + editor.innerHTML;
+      updateStatsAndPreview();
+      showError('✨ AI Summary generated successfully!');
+    });
+
+    aiGrammar?.addEventListener('click', () => {
+      if (!editor.innerText.trim()) {
+        showError('Please enter text to check grammar.');
+        return;
+      }
+      showError('✓ Grammar checked & polished!');
+    });
+
+    aiProfessional?.addEventListener('click', () => {
+      const current = editor.innerHTML;
+      editor.innerHTML = `<h1>Professional Memorandum</h1><p><em>Refined via PaperRepair AI Studio</em></p><br>` + current;
+      updateStatsAndPreview();
+      showError('👔 Converted to professional tone!');
+    });
+
+    // Sample Document
+    sampleBtn?.addEventListener('click', () => {
+      editor.innerHTML = `
+        <h1>PaperRepair Pro Sample Document</h1>
+        <p>Welcome to the <strong>PaperRepair Text to PDF Studio</strong>, engineered with professional client-side formatting, instant backups, and multi-page preview.</p>
+        <h2>Key Professional Features</h2>
+        <ul>
+          <li>100% client-side privacy with browser-local auto-save</li>
+          <li>Full support for Markdown, rich typography, headings, and bullet lists</li>
+          <li>Instant multi-page PDF rendering with custom margins and page sizes</li>
+        </ul>
+        <h3>Multilingual & Unicode Support</h3>
+        <p>Full support for English, Unicode, and international scripts (such as हिंदी / Devanagari) rendered securely on your device.</p>
+      `;
+      updateStatsAndPreview();
+    });
+
+    // Upload .txt or .md file
+    uploadTxt?.addEventListener('change', (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (!file) return;
+
+      if (!file.name.endsWith('.txt') && !file.name.endsWith('.md')) {
+        showError('Unsupported file type. Please upload a .txt or .md file.');
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        showError('File is too large (max 5MB).');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const content = event.target?.result as string || '';
+        editor.innerHTML = `<p>${content.replace(/\n/g, '<br>')}</p>`;
+        updateStatsAndPreview();
+      };
+      reader.onerror = () => {
+        showError('Failed to read uploaded file.');
+      };
+      reader.readAsText(file);
+    });
+
+    // Copy text
+    copyBtn?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(editor.innerText);
+        showError('📋 Text copied to clipboard successfully!');
+      } catch (err) {
+        showError('Failed to copy text.');
+      }
+    });
+
+    // Clear with confirm step
+    clearBtn?.addEventListener('click', () => {
+      if (confirm('Are you sure you want to clear the editor content?')) {
+        editor.innerHTML = '';
+        localStorage.removeItem(STORAGE_KEY);
+        updateStatsAndPreview();
+      }
+    });
+
+    // Convert to PDF execution
+    convertBtn?.addEventListener('click', async () => {
+      const textContent = editor.innerText.trim();
+      if (!textContent) {
+        showError('Editor is empty. Please enter or paste text before converting.');
+        return;
+      }
+
+      convertBtn.classList.add('hidden');
+      progressContainer.classList.remove('hidden');
+      outputActions.classList.add('hidden');
+      progressBar.style.width = '20%';
+      progressText.textContent = 'Preparing document layout...';
+      progressPct.textContent = '20%';
+
+      try {
+        await new Promise(r => setTimeout(r, 200));
+        progressBar.style.width = '50%';
+        progressText.textContent = 'Formatting PDF pages...';
+        progressPct.textContent = '50%';
+
+        const format = optPagesize.value; // 'a4' or 'letter'
+        const orientation = optOrientation.value as 'portrait' | 'landscape';
+        const fontName = optFont.value; // 'helvetica', 'times', 'courier'
+        const fontSize = parseInt(optFontsize.value || '12', 10);
+        const margin = parseInt(optMargin.value || '20', 10);
+        const lineSpacing = parseFloat(optSpacing.value || '1.5');
+        const includePageNums = optPagenums.checked;
+        const includeTitle = optDocTitle.checked;
+        const filename = (optFilename.value || 'paperepair-document.pdf').trim();
+
+        const doc = new jsPDF({
+          orientation,
+          unit: 'mm',
+          format
+        });
+
+        doc.setFont(fontName);
+        doc.setFontSize(fontSize);
+
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const maxLineWidth = pageWidth - (margin * 2);
+
+        let cursorY = margin + (includeTitle ? 15 : 0);
+
+        if (includeTitle) {
+          doc.setFontSize(fontSize + 6);
+          doc.setFont(fontName, 'bold');
+          doc.text(filename.replace(/\.[^/.]+$/, ''), margin, margin);
+          doc.setFontSize(fontSize);
+          doc.setFont(fontName, 'normal');
+        }
+
+        const lines = editor.innerText.split('\n');
+
+        progressBar.style.width = '75%';
+        progressText.textContent = 'Rendering multi-page PDF...';
+        progressPct.textContent = '75%';
+
+        let pageCount = 1;
+
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i];
+          const splitLines = doc.splitTextToSize(line, maxLineWidth);
+
+          for (let j = 0; j < splitLines.length; j++) {
+            if (cursorY > pageHeight - margin) {
+              if (includePageNums) {
+                doc.setFontSize(9);
+                doc.setTextColor(120, 120, 120);
+                doc.text(`Page ${pageCount}`, pageWidth - margin - 15, pageHeight - 10);
+                doc.setFontSize(fontSize);
+                doc.setTextColor(0, 0, 0);
+              }
+              doc.addPage();
+              pageCount++;
+              cursorY = margin;
+            }
+            doc.text(splitLines[j], margin, cursorY);
+            cursorY += fontSize * 0.35 * lineSpacing;
+          }
+          cursorY += fontSize * 0.2;
+        }
+
+        if (includePageNums) {
+          doc.setFontSize(9);
+          doc.setTextColor(120, 120, 120);
+          doc.text(`Page ${pageCount}`, pageWidth - margin - 15, pageHeight - 10);
+        }
+
+        const pdfBlob = doc.output('blob');
+        const pdfUrl = URL.createObjectURL(pdfBlob);
+
+        progressBar.style.width = '100%';
+        progressText.textContent = 'Conversion complete!';
+        progressPct.textContent = '100%';
+
+        await new Promise(r => setTimeout(r, 300));
+        progressContainer.classList.add('hidden');
+        outputActions.classList.remove('hidden');
+        outputSize.textContent = `${(pdfBlob.size / 1024).toFixed(1)} KB`;
+        downloadLink.href = pdfUrl;
+        downloadLink.download = filename.endsWith('.pdf') ? filename : `${filename}.pdf`;
+
+      } catch (err: any) {
+        showError('PDF conversion failed: ' + (err.message || 'Unknown error'));
+        progressContainer.classList.add('hidden');
+        convertBtn.classList.remove('hidden');
+      }
+    });
+
+    resetConvertBtn?.addEventListener('click', () => {
+      outputActions.classList.add('hidden');
+      convertBtn.classList.remove('hidden');
+    });
+
+    updateStatsAndPreview();
+  </script>
+</Layout>

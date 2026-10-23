@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { TOOLS, CATEGORIES } from '../../data/tools';
+---
+
+<Layout title="All 14 Document Utilities — PaperRepair" description="Browse all 14 professional, free browser-based document utilities on PaperRepair. PDF, Image, and Document conversion tools.">
+  <Header />
+
+  <!-- Directory Header -->
+  <section class="bg-white py-20 px-6 border-b border-[#ebebeb]">
+    <div class="max-w-7xl mx-auto space-y-6">
+      <div class="font-mono text-xs uppercase text-[#8f8f8f] tracking-wider">Directory</div>
+      <h1 class="text-4xl sm:text-6xl font-semibold tracking-tight text-[#171717]">All 14 Document Utilities</h1>
+      <p class="text-[#4d4d4d] max-w-2xl text-base sm:text-lg leading-relaxed">
+        Browse our complete suite of browser-side document tools. Search or filter by category to find exactly what you need.
+      </p>
+
+      <!-- Search & Filter Controls -->
+      <div class="pt-6 flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div class="relative w-full md:w-[420px]">
+          <svg class="absolute left-4 top-3.5 w-4 h-4 text-[#8f8f8f]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input
+            type="text"
+            id="tool-filter"
+            placeholder="Filter tools by name or keyword..."
+            class="w-full bg-[#fafafa] border border-[#ebebeb] rounded-xl pl-11 pr-4 py-3 text-sm text-[#171717] placeholder-[#a1a1a1] focus:outline-none focus:border-[#0070f3] focus:ring-2 focus:ring-[#0070f3]/10 shadow-2xs"
+          />
+        </div>
+
+        <div class="flex items-center gap-2.5 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+          <button class="category-btn active px-5 py-2.5 rounded-full text-xs font-medium bg-[#171717] text-white transition-all shrink-0 shadow-xs" data-category="all">
+            All Tools (14)
+          </button>
+          <button class="category-btn px-5 py-2.5 rounded-full text-xs font-medium bg-white border border-[#ebebeb] text-[#4d4d4d] hover:text-[#171717] hover:border-[#171717] transition-all shrink-0 shadow-2xs" data-category="PDF Tools">
+            PDF Tools (5)
+          </button>
+          <button class="category-btn px-5 py-2.5 rounded-full text-xs font-medium bg-white border border-[#ebebeb] text-[#4d4d4d] hover:text-[#171717] hover:border-[#171717] transition-all shrink-0 shadow-2xs" data-category="Image Tools">
+            Image Tools (2)
+          </button>
+          <button class="category-btn px-5 py-2.5 rounded-full text-xs font-medium bg-white border border-[#ebebeb] text-[#4d4d4d] hover:text-[#171717] hover:border-[#171717] transition-all shrink-0 shadow-2xs" data-category="Document Converter">
+            Converters (7)
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Grid Listing -->
+  <section class="py-20 px-6 bg-[#fafafa] min-h-[700px]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tools-container">
+        {TOOLS.map((tool) => (
+          <a
+            href={`/tools/${tool.slug}`}
+            class="tool-card group bg-white border border-[#ebebeb] rounded-2xl p-8 hover:border-[#171717] transition-all hover:shadow-xl hover:shadow-black/[0.04] flex flex-col justify-between"
+            data-category={tool.category}
+            data-name={tool.name.toLowerCase()}
+            data-desc={tool.shortDesc.toLowerCase()}
+          >
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="inline-flex px-3 py-1 rounded-full text-xs font-mono bg-[#fafafa] border border-[#ebebeb] text-[#4d4d4d] font-medium">
+                  {tool.category}
+                </span>
+                <span class="text-[#8f8f8f] group-hover:text-[#171717] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">↗</span>
+              </div>
+              <h3 class="text-xl font-semibold text-[#171717] mb-3 group-hover:text-[#0070f3] transition-colors">{tool.name}</h3>
+              <p class="text-sm text-[#4d4d4d] leading-relaxed">{tool.shortDesc}</p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-[#ebebeb]/60 flex items-center justify-between text-xs font-mono text-[#8f8f8f]">
+              <span>Browser ready</span>
+              <span class="text-[#0070f3] font-medium opacity-0 group-hover:opacity-100 transition-opacity">Launch utility →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Empty State -->
+      <div id="no-results" class="hidden text-center py-24">
+        <h3 class="text-xl font-semibold text-[#171717]">No matching utilities found</h3>
+        <p class="text-sm text-[#8f8f8f] mt-2">Try searching with a different keyword or category.</p>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+
+  <script>
+    const searchInput = document.getElementById('tool-filter') as HTMLInputElement;
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const toolCards = document.querySelectorAll('.tool-card');
+    const noResults = document.getElementById('no-results');
+
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const qParam = urlParams.get('q');
+    if (qParam && searchInput) {
+      searchInput.value = qParam;
+      searchQuery = qParam.toLowerCase();
+    }
+
+    function filterTools() {
+      let visibleCount = 0;
+      toolCards.forEach((card) => {
+        const el = card as HTMLElement;
+        const cat = el.getAttribute('data-category');
+        const name = el.getAttribute('data-name') || '';
+        const desc = el.getAttribute('data-desc') || '';
+
+        const matchesCat = currentCategory === 'all' || cat === currentCategory;
+        const matchesQuery = !searchQuery || name.includes(searchQuery) || desc.includes(searchQuery);
+
+        if (matchesCat && matchesQuery) {
+          el.style.display = 'flex';
+          visibleCount++;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      if (noResults) {
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = (e.target as HTMLInputElement).value.toLowerCase();
+        filterTools();
+      });
+    }
+
+    categoryBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        categoryBtns.forEach(b => {
+          b.classList.remove('bg-[#171717]', 'text-white', 'shadow-xs');
+          b.classList.add('bg-white', 'border', 'border-[#ebebeb]', 'text-[#4d4d4d]', 'shadow-2xs');
+        });
+        btn.classList.remove('bg-white', 'border', 'border-[#ebebeb]', 'text-[#4d4d4d]', 'shadow-2xs');
+        btn.classList.add('bg-[#171717]', 'text-white', 'shadow-xs');
+
+        currentCategory = btn.getAttribute('data-category') || 'all';
+        filterTools();
+      });
+    });
+
+    if (searchQuery) {
+      filterTools();
+    }
+  </script>
+</Layout>

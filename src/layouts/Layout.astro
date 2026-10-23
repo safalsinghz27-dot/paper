@@ -1,23 +1,24 @@
+---
+import '../styles/global.css';
+
+const { title = "PaperRepair — Professional Free Online Document & PDF Utilities", description = "Lightning-fast, private, secure online document utilities. Convert, repair, extract, and manipulate PDF, Word, Excel, CSV, JPG, and Text files instantly in your browser." } = Astro.props;
+---
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<!-- Geist font from Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 	</head>
-	<body>
+	<body class="bg-[#fafafa] text-[#171717] font-['Geist',sans-serif] antialiased selection:bg-[#0070f3] selection:text-white min-h-screen flex flex-col justify-between">
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
