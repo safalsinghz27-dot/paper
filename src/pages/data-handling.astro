@@ -1,0 +1,394 @@
+---
+title: "Data Handling & Security"
+description: "How PaperRepair handles your data securely"
+---
+
+# Data Handling & Security
+
+**Last Updated:** November 4, 2026
+
+## Overview
+
+PaperRepair is built with privacy and security as core principles. This document explains exactly how we handle your data.
+
+---
+
+## 1. Client-Side Processing
+
+### 1.1 What is Client-Side?
+Client-side processing means:
+- Your files are processed in **your browser**, not on our servers
+- No files are ever uploaded to our servers
+- All conversions happen on your device
+- You maintain full control of your data
+
+### 1.2 How It Works
+```
+Your Device → Browser (Processing) → Your Device
+     ↓
+  File Input
+     ↓
+  Your Browser Processes File
+     ↓
+  Download Converted File
+     ↓
+  File Deleted from Memory
+```
+
+**Key Point:** The dotted line shows there's NO connection to our servers during processing.
+
+---
+
+## 2. What Data We Process
+
+| Data Type | How It's Processed | Storage | Deletion |
+|-----------|-------------------|---------|----------|
+| Files you upload | In your browser | Your browser cache | Immediately after conversion |
+| Conversion settings | In your browser | Browser memory | After conversion |
+| Session data | In your browser | Session storage | When you close browser |
+| Analytics | Sent to our servers | Our servers (anonymized) | Per Google Analytics policy |
+| Error logs | Sent to our servers | Our servers | 90 days |
+
+---
+
+## 3. Your Files Are NOT Stored
+
+### 3.1 Processing Timeline
+1. You select a file → File loaded into your browser
+2. You configure settings → Settings stored in browser memory
+3. You click "Convert" → Processing happens in your browser
+4. Conversion completes → New file created in your browser
+5. You download → File saved to your Downloads folder
+6. Browser session ends → All temporary data cleared
+7. **File is GONE from our systems**
+
+### 3.2 Backup & Logging
+- ❌ No backups of your files are created
+- ❌ No copies are stored on our servers
+- ❌ No logs contain your file content
+- ❌ No automatic uploads happen
+
+### 3.3 Exception: Error Scenarios
+If a conversion fails:
+- The error message is logged (text only)
+- A stack trace is recorded (code information only)
+- **Your file content is NOT logged**
+- Errors are deleted after 90 days
+
+---
+
+## 4. Browser Storage
+
+### 4.1 What We Store Locally (In Your Browser)
+- Recent files list (just filenames)
+- Your conversion preferences
+- UI state (expanded/collapsed sections)
+- Dark mode preference
+
+**Location:** Your browser's `localStorage` and `sessionStorage`
+**Access:** Only PaperRepair can access this data
+**Control:** You can clear it anytime in browser settings
+
+### 4.2 Cookies
+```
+Essential Cookies:
+├─ Session cookie (for page functionality)
+├─ CSRF token (for security)
+└─ Language preference
+
+Analytics Cookies:
+├─ Google Analytics ID
+└─ Session tracking
+```
+
+**Lifetime:** Session cookies expire when you close the browser
+**Opt-out:** Disable cookies in browser settings
+
+---
+
+## 5. Network & Transmission Security
+
+### 5.1 Encryption In Transit
+All data transmitted to/from PaperRepair is encrypted:
+
+```
+HTTPS/TLS 1.2+
+├─ Certificate: Valid & up-to-date
+├─ Key Exchange: ECDHE (secure)
+├─ Cipher: AES-256-GCM
+└─ Authentication: HSTS enabled
+```
+
+### 5.2 What IS Sent to Our Servers
+✅ Analytics events (anonymized page views)
+✅ Error reports (no file content)
+✅ Feedback (if you submit it)
+✅ Support emails (if you contact us)
+
+### 5.3 What IS NOT Sent to Our Servers
+❌ Your files
+❌ File content
+❌ Your personal information
+❌ Browsing history outside PaperRepair
+
+---
+
+## 6. Security Headers
+
+PaperRepair uses advanced security headers to protect you:
+
+```
+Content-Security-Policy (CSP)
+├─ Restricts script execution
+├─ Prevents XSS attacks
+├─ Blocks unauthorized resource loading
+└─ Allows only necessary resources
+
+X-Frame-Options: DENY
+├─ Prevents clickjacking
+└─ Ensures pages can't be embedded
+
+X-Content-Type-Options: nosniff
+├─ Prevents MIME type sniffing
+└─ Stops browser from guessing file types
+
+HSTS (HTTP Strict Transport Security)
+├─ Forces HTTPS for 1 year
+├─ Prevents downgrade attacks
+└─ Included in browser preload lists
+```
+
+---
+
+## 7. Libraries & Dependencies
+
+All libraries used in PaperRepair for file processing run **in your browser**:
+
+| Library | Purpose | Processing Location |
+|---------|---------|-------------------|
+| jsPDF | PDF generation | Your browser ✓ |
+| XLSX | Excel/CSV parsing | Your browser ✓ |
+| pdfjs-dist | PDF reading | Your browser ✓ |
+| sharp | Image processing | Your browser ✓ |
+| papaparse | CSV parsing | Your browser ✓ |
+
+**None of these libraries sends data to external servers.**
+
+---
+
+## 8. Analytics & Tracking
+
+### 8.1 Google Analytics
+We use Google Analytics to understand how you use PaperRepair:
+
+```
+Data Collected:
+├─ Pages you visit
+├─ Time spent on each page
+├─ Conversion events (feature usage)
+├─ Device type & OS
+└─ Rough location (country-level)
+
+Data NOT Collected:
+├─ Your IP address (anonymized)
+├─ Personal information
+├─ File content or names
+├─ Individual user tracking
+```
+
+### 8.2 Privacy Controls
+You can:
+- Disable analytics in browser settings
+- Use privacy mode / incognito browsing
+- Install ad blockers
+- Opt-out of Google Analytics
+
+---
+
+## 9. Error Reporting
+
+### 9.1 What Happens When Something Breaks
+If PaperRepair encounters an error:
+
+```
+Error Occurs
+    ↓
+Error caught by error handler
+    ↓
+Error ID generated (anonymous)
+    ↓
+Stack trace recorded (code info only)
+    ↓
+Error logged (no file content)
+    ↓
+Error report sent to our servers
+    ↓
+Developers review for fixes
+    ↓
+Error deleted after 90 days
+```
+
+### 9.2 What's in an Error Report
+✅ Error message
+✅ Stack trace
+✅ Timestamp
+✅ Browser version
+✅ Page where error occurred
+
+❌ Your file content
+❌ Your personal data
+❌ Your IP address (anonymized)
+
+---
+
+## 10. Third-Party Services
+
+### 10.1 Google Fonts
+- Used for typography
+- No personal data is sent
+- Fonts cached locally on your device
+
+### 10.2 CDN (Content Delivery Network)
+- Used to serve JavaScript & CSS faster
+- No personal data is sent
+- Request includes only file request information
+
+### 10.3 Google Analytics
+- See Section 8 above
+
+---
+
+## 11. Data Retention
+
+### 11.1 Retention Schedule
+```
+Your Files
+├─ Temporary browser cache: Cleared after conversion
+├─ Server-side storage: None
+└─ Backup copies: None
+
+Analytics Data
+├─ Active logs: Real-time
+├─ Archived: 26 months (Google Analytics)
+└─ Aggregated reports: Indefinite
+
+Error Reports
+├─ Storage: 90 days
+└─ Review: As needed for debugging
+
+Support Emails
+├─ Storage: Until issue resolved + 90 days
+└─ Deletion: Automatic after retention period
+```
+
+---
+
+## 12. International Data Transfers
+
+### 12.1 Where Your Data Is Stored
+- Analytics: Google servers (various locations)
+- Error logs: Our servers in [Your Region]
+- Local data: Your device only
+
+### 12.2 Data Protection
+All data transfers comply with:
+- GDPR (EU/UK users)
+- CCPA (California users)
+- Other applicable regulations
+
+---
+
+## 13. Security Practices
+
+### 13.1 Development Security
+```
+Code Review
+├─ All code changes reviewed
+├─ Security checks performed
+└─ Dependencies audited
+
+Dependency Management
+├─ Regular updates
+├─ Vulnerability scanning
+└─ Outdated packages removed
+
+Secrets Management
+├─ Never committed to git
+├─ Stored securely
+└─ Rotated regularly
+```
+
+### 13.2 Incident Response
+- Security issues reported to: security@paperepair.com
+- Response time: 48 hours
+- No public disclosure until patch available
+
+---
+
+## 14. Compliance
+
+### 14.1 GDPR (EU Users)
+- Legal basis: Legitimate interest
+- Your rights: Access, delete, port your data
+- Data Protection Officer: [Contact]
+- Response time: 30 days
+
+### 14.2 CCPA (California Users)
+- Right to know what data is collected
+- Right to delete your data
+- Right to opt-out of sale (we don't sell)
+- No discrimination for exercising rights
+
+### 14.3 Other Regulations
+- PIPEDA (Canada)
+- LGPD (Brazil)
+- PDPA (Singapore)
+- And others as applicable
+
+---
+
+## 15. Your Rights
+
+### 15.1 Access
+You have the right to:
+- Know what data we hold about you
+- Request a copy of your data
+- Get data in a portable format
+
+### 15.2 Deletion
+You have the right to:
+- Delete your account
+- Remove your data from our systems
+- Erase your browsing history
+
+### 15.3 Correction
+You have the right to:
+- Correct inaccurate data
+- Update your preferences
+- Modify your settings
+
+### 15.4 Opt-Out
+You have the right to:
+- Disable analytics tracking
+- Clear browser storage
+- Disable cookies
+
+---
+
+## 16. Contact Us
+
+For questions about data handling and security:
+
+**Email:** privacy@paperepair.com
+**Security Issues:** security@paperepair.com
+**Website:** https://paperepair.com
+
+**Response Time:** 30 days for data requests, 48 hours for security issues
+
+---
+
+## 17. Changes to This Document
+
+We update this document as our practices evolve. Changes will be reflected with an updated date above.
+
+**Last Review:** November 4, 2026
