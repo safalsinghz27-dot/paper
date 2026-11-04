@@ -14,54 +14,61 @@ import { TOOLS } from '../data/tools';
     <main class="max-w-[1440px] mx-auto px-10 py-10 space-y-8">
 
       <!-- SECTION 2 — HERO -->
-      <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-6">
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1F1F1F] border border-[#2E2E2E] text-xs font-mono text-[#EDEDED]">
+      <section class="relative w-full rounded-2xl overflow-hidden" style="aspect-ratio: 21/9;">
+        <!-- Background Image -->
+        <img src="/hero-illustration.webp" alt="Document conversion illustration" class="absolute inset-0 w-full h-full object-cover" />
+
+        <!-- Overlay Gradient (optional for better text readability) -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#171717]/95 via-[#171717]/80 to-transparent"></div>
+
+        <!-- Content Overlay -->
+        <div class="relative h-full flex flex-col justify-center px-10 sm:px-12 lg:px-16 py-8 max-w-2xl">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1F1F1F]/80 border border-[#2E2E2E] text-xs font-mono text-[#EDEDED] w-fit mb-4">
             <span class="w-2 h-2 rounded-full bg-[#1b8ae6] animate-pulse"></span>
             Secure Client-Side Document Utilities
           </div>
 
-          <h1 class="text-4xl sm:text-[46px] font-semibold tracking-tight text-[#EDEDED] leading-[1.1]">
+          <!-- Heading -->
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#EDEDED] leading-[1.15] mb-4">
             Secure Browser-Based PDF & Document Utilities
           </h1>
 
-          <p class="text-sm sm:text-base text-[#FFFFFF] max-w-xl leading-relaxed">
+          <!-- Description -->
+          <p class="text-sm sm:text-base text-[#FFFFFF]/95 max-w-xl leading-relaxed mb-6">
             Convert, extract, and manipulate PDF, Word, Excel, CSV, text and image files instantly in your browser with zero remote server uploads.
           </p>
 
           <!-- Search Bar -->
-          <div class="max-w-xl pt-2">
-            <div class="relative flex items-center bg-[#1F1F1F] border border-[#2E2E2E] rounded-xl h-14 shadow-lg focus-within:border-[#1b8ae6] transition-all">
-              <svg class="absolute left-4 w-4 h-4 text-[#FFFFFF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div class="max-w-2xl mb-4">
+            <div class="relative flex items-center bg-[#0F1F3C]/60 backdrop-blur-md border border-[#1b8ae6]/30 rounded-full h-14 shadow-lg focus-within:border-[#1b8ae6]/60 focus-within:bg-[#0F1F3C]/80 transition-all">
+              <svg class="absolute left-5 w-4 h-4 text-[#1b8ae6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
               </svg>
               <input
                 type="text"
                 id="hero-search"
                 placeholder="Search tools..."
-                class="w-full bg-transparent pl-11 pr-4 text-sm text-[#EDEDED] placeholder-[#A3A3A3] focus:outline-none"
+                class="w-full bg-transparent pl-13 pr-4 text-sm text-[#EDEDED] placeholder-[#6B8DD6] focus:outline-none"
               />
-              <a href="/tools" class="mr-2 px-6 py-2.5 rounded-lg bg-[#1b8ae6] text-white text-xs font-medium hover:bg-[#1572c0] transition-colors shrink-0">
+              <a href="/tools" class="mr-2 px-6 py-2.5 rounded-full bg-[#1b8ae6] text-white text-xs font-medium hover:bg-[#1572c0] transition-colors shrink-0">
                 Search
               </a>
             </div>
           </div>
-        </div>
 
-        <!-- Right Illustration -->
-        <div class="lg:col-span-5">
-          <div class="bg-[#1F1F1F] border border-[#2E2E2E] rounded-2xl p-6 shadow-xl relative overflow-hidden aspect-video flex flex-col justify-between">
-            <div class="flex items-center justify-between border-b border-[#2E2E2E] pb-3">
-              <div class="flex items-center gap-2">
-                <div class="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-              </div>
-              <span class="text-[11px] text-[#666666]">browser window</span>
-            </div>
-            <div class="flex-1 flex items-center justify-center">
-              <img src="/hero-illustration.webp" alt="Document conversion illustration" class="w-3/4 h-3/4 object-contain" />
-            </div>
+          <!-- Popular Tools Tags -->
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="text-xs font-medium text-[#A3A3A3]">Popular:</span>
+            <a href="/tools/pdf-to-word" class="px-3 py-1.5 rounded-full bg-[#1F1F1F]/80 border border-[#2E2E2E] text-xs text-[#EDEDED] hover:border-[#1b8ae6] transition-colors">
+              PDF to Word
+            </a>
+            <a href="/tools/compress-pdf" class="px-3 py-1.5 rounded-full bg-[#1F1F1F]/80 border border-[#2E2E2E] text-xs text-[#EDEDED] hover:border-[#1b8ae6] transition-colors">
+              Compress PDF
+            </a>
+            <a href="/tools/image-to-pdf" class="px-3 py-1.5 rounded-full bg-[#1F1F1F]/80 border border-[#2E2E2E] text-xs text-[#EDEDED] hover:border-[#1b8ae6] transition-colors">
+              Image to PDF
+            </a>
           </div>
         </div>
       </section>
@@ -72,9 +79,9 @@ import { TOOLS } from '../data/tools';
         <div class="absolute -top-6 -left-6 w-8 h-8 rounded-lg bg-[#6c4df0]/20 rotate-12 blur-[1px] animate-pulse pointer-events-none" aria-hidden="true"></div>
         <div class="absolute -bottom-6 -right-6 w-10 h-10 rounded-xl bg-[#1b8ae6]/25 -rotate-12 blur-[1px] animate-pulse pointer-events-none" aria-hidden="true"></div>
 
-        <!-- 1. PDF Tools -->
-        <a href="/tools?cat=PDF" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#6c4df0]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-5 bg-gradient-to-b from-[#6c4df0] to-[#5536d1] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
+        <!-- 1. PDF Tools - Cyan -->
+        <a href="/tools?cat=PDF" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#06B6D4]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
+          <div class="p-5 bg-gradient-to-b from-[#06B6D4] to-[#0891B2] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/document-text-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="PDF Tools" />
@@ -90,16 +97,16 @@ import { TOOLS } from '../data/tools';
             </div>
           </div>
           <div class="p-3 bg-[#19222b]">
-            <div class="bg-[#6c4df0]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
+            <div class="bg-[#06B6D4]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
               <span class="text-white/70 font-medium">Featured Tool :</span>
-              <span class="text-[#b1a2ff] font-bold">Text to PDF</span>
+              <span class="text-[#06B6D4] font-bold">Text to PDF</span>
             </div>
           </div>
         </a>
 
-        <!-- 2. Image Tools -->
-        <a href="/tools?cat=Image" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#f26a14]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-5 bg-gradient-to-b from-[#f26a14] to-[#d6570c] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
+        <!-- 2. Image Tools - Teal -->
+        <a href="/tools?cat=Image" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#0D9488]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
+          <div class="p-5 bg-gradient-to-b from-[#0D9488] to-[#0F766E] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/image-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Image Tools" />
@@ -115,16 +122,16 @@ import { TOOLS } from '../data/tools';
             </div>
           </div>
           <div class="p-3 bg-[#19222b]">
-            <div class="bg-[#f26a14]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
+            <div class="bg-[#0D9488]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
               <span class="text-white/70 font-medium">Featured Tool :</span>
-              <span class="text-[#ffb185] font-bold">Image to PDF</span>
+              <span class="text-[#0D9488] font-bold">Image to PDF</span>
             </div>
           </div>
         </a>
 
-        <!-- 3. Convert Tools -->
-        <a href="/tools?cat=Document Converter" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#d8194e]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-5 bg-gradient-to-b from-[#d8194e] to-[#bd1140] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
+        <!-- 3. Convert Tools - Coral Pink -->
+        <a href="/tools?cat=Document Converter" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#F472B6]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
+          <div class="p-5 bg-gradient-to-b from-[#F472B6] to-[#EC4899] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/multiple-documents-files-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Convert Tools" />
@@ -140,16 +147,16 @@ import { TOOLS } from '../data/tools';
             </div>
           </div>
           <div class="p-3 bg-[#19222b]">
-            <div class="bg-[#d8194e]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
+            <div class="bg-[#F472B6]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
               <span class="text-white/70 font-medium">Featured Tool :</span>
-              <span class="text-[#ff92af] font-bold">JPG to Word</span>
+              <span class="text-[#F472B6] font-bold">JPG to Word</span>
             </div>
           </div>
         </a>
 
-        <!-- 4. All Tools -->
-        <a href="/tools" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#1d63c9]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-5 bg-gradient-to-b from-[#1d63c9] to-[#154fa3] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
+        <!-- 4. All Tools - Indigo -->
+        <a href="/tools" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#6366F1]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
+          <div class="p-5 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/grid-layout-svgrepo-com-3.svg" class="w-full h-full object-contain brightness-0 invert" alt="All Tools" />
@@ -165,9 +172,9 @@ import { TOOLS } from '../data/tools';
             </div>
           </div>
           <div class="p-3 bg-[#19222b]">
-            <div class="bg-[#1d63c9]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
+            <div class="bg-[#6366F1]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
               <span class="text-white/70 font-medium">Featured Tool :</span>
-              <span class="text-[#8bb4ff] font-bold">All Utilities</span>
+              <span class="text-[#6366F1] font-bold">All Utilities</span>
             </div>
           </div>
         </a>
@@ -331,8 +338,8 @@ import { TOOLS } from '../data/tools';
         </div>
 
         <div class="lg:col-span-5">
-          <div class="bg-[#242424] rounded-xl overflow-hidden flex items-center justify-center shadow-inner" style="aspect-ratio: 1446/1087;">
-            <img src="/trust-workflow.webp" alt="Trust Workflow Illustration" class="w-full h-full object-contain bg-[#242424]" />
+          <div class="bg-[#242424] rounded-xl overflow-hidden flex items-center justify-center shadow-inner p-4">
+            <img src="/trust-workflow.webp" alt="Document Conversion Workflow" class="w-full h-auto object-contain" />
           </div>
         </div>
       </div>
