@@ -24,9 +24,40 @@
   body {
     background-color: var(--color-background);
     color: var(--color-text);
-    font-family: 'Geist', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 }
+
+/* ===== New category card colours (safe, scoped) ===== */
+.cat-cards {
+  --pdf-a:#1fa85a;  --pdf-b:#0d7a3a;  --pdf-strip:rgba(31,168,90,.16);  --pdf-txt:#6ee7a1;
+  --img-a:#b45cf2;  --img-b:#7f35d6;  --img-strip:rgba(180,92,242,.16); --img-txt:#e0b3ff;
+  --cnv-a:#ffc21a;  --cnv-b:#ee9a0a;  --cnv-strip:rgba(255,194,26,.14); --cnv-txt:#ffd666;
+  --all-a:#2aa3f5;  --all-b:#1272c4;  --all-strip:rgba(42,163,245,.16); --all-txt:#8fd3ff;
+}
+
+/* PDF */
+.cat-cards .cat-card.pdf .cat-top { background:#1fa85a; background:linear-gradient(135deg,var(--pdf-a),var(--pdf-b)); }
+.cat-cards .cat-card.pdf .cat-featured { background:var(--pdf-strip); }
+.cat-cards .cat-card.pdf .cat-featured strong { color:var(--pdf-txt); }
+
+/* Image */
+.cat-cards .cat-card.img .cat-top { background:#b45cf2; background:linear-gradient(135deg,var(--img-a),var(--img-b)); }
+.cat-cards .cat-card.img .cat-featured { background:var(--img-strip); }
+.cat-cards .cat-card.img .cat-featured strong { color:var(--img-txt); }
+
+/* Convert (amber: dark text) */
+.cat-cards .cat-card.cnv .cat-top { background:#ffc21a; background:linear-gradient(135deg,var(--cnv-a),var(--cnv-b)); }
+.cat-cards .cat-card.cnv .cat-top h3,
+.cat-cards .cat-card.cnv .cat-top p,
+.cat-cards .cat-card.cnv .cat-top svg { color:#2a1c00; }
+.cat-cards .cat-card.cnv .cat-featured { background:var(--cnv-strip); }
+.cat-cards .cat-card.cnv .cat-featured strong { color:var(--cnv-txt); }
+
+/* All */
+.cat-cards .cat-card.all .cat-top { background:#2aa3f5; background:linear-gradient(135deg,var(--all-a),var(--all-b)); }
+.cat-cards .cat-card.all .cat-featured { background:var(--all-strip); }
+.cat-cards .cat-card.all .cat-featured strong { color:var(--all-txt); }
 
 
 
