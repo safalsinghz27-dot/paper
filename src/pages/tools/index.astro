@@ -61,9 +61,14 @@ import { TOOLS, CATEGORIES } from '../../data/tools';
           >
             <div>
               <div class="flex items-center justify-between mb-6">
-                <span class="inline-flex px-3 py-1 rounded-full text-xs font-mono bg-[#fafafa] border border-[#ebebeb] text-[#4d4d4d] font-medium">
-                  {tool.category}
-                </span>
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-[#f5f5f5] border border-[#ebebeb] flex items-center justify-center">
+                    <img src={`/icons/${tool.icon}`} alt={tool.name} class="w-6 h-6" />
+                  </div>
+                  <span class="inline-flex px-3 py-1 rounded-full text-xs font-mono bg-[#fafafa] border border-[#ebebeb] text-[#4d4d4d] font-medium">
+                    {tool.category}
+                  </span>
+                </div>
                 <span class="text-[#8f8f8f] group-hover:text-[#171717] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all">↗</span>
               </div>
               <h3 class="text-xl font-semibold text-[#171717] mb-3 group-hover:text-[#0070f3] transition-colors">{tool.name}</h3>

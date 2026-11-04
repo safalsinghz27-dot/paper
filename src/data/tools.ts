@@ -9,6 +9,7 @@ export interface Tool {
   h1: string;
   limitation?: string;
   status: 'working' | 'partial';
+  icon: string;
 }
 
 export const TOOLS: Tool[] = [
@@ -22,7 +23,8 @@ export const TOOLS: Tool[] = [
     description: 'Turn plain text into a downloadable PDF document with this free online Text to PDF converter.',
     metaDesc: 'Turn plain text into a downloadable PDF document with this free online Text to PDF converter.',
     h1: 'Text to PDF Converter',
-    status: 'working'
+    status: 'working',
+    icon: 'text2pdf.svg'
   },
   {
     id: 'pdf-to-text',
@@ -33,7 +35,8 @@ export const TOOLS: Tool[] = [
     description: 'Extract the text content from a PDF file with this free online PDF to Text extractor.',
     metaDesc: 'Extract the text content from a PDF file with this free online PDF to Text extractor.',
     h1: 'PDF to Text Extractor',
-    status: 'working'
+    status: 'working',
+    icon: 'pdf2txt.svg'
   },
   {
     id: 'pdf-to-csv',
@@ -45,7 +48,8 @@ export const TOOLS: Tool[] = [
     metaDesc: 'Extract tabular data from a PDF file into a CSV spreadsheet format.',
     h1: 'PDF to CSV Converter',
     limitation: 'Complex multi-column PDF layouts and scanned images without text layers may require manual table alignment after export.',
-    status: 'partial'
+    status: 'partial',
+    icon: 'pdf2csv.svg'
   },
   {
     id: 'pdf-to-html',
@@ -56,7 +60,8 @@ export const TOOLS: Tool[] = [
     description: 'Convert PDF content into clean HTML code with this free online PDF to HTML converter.',
     metaDesc: 'Convert PDF content into clean HTML code with this free online PDF to HTML converter.',
     h1: 'PDF to HTML Converter',
-    status: 'working'
+    status: 'working',
+    icon: 'pdf2html.svg'
   },
   {
     id: 'pdf-to-excel',
@@ -68,7 +73,8 @@ export const TOOLS: Tool[] = [
     metaDesc: 'Convert tables from a PDF file into an Excel (.xlsx) spreadsheet.',
     h1: 'PDF to Excel Converter',
     limitation: 'Advanced visual gridlines and complex nested table borders in PDF files are extracted as linear row-column text cells.',
-    status: 'partial'
+    status: 'partial',
+    icon: 'pdf2excl.svg'
   },
 
   // Image Tools (2)
@@ -81,7 +87,8 @@ export const TOOLS: Tool[] = [
     description: 'Convert JPG, PNG or WebP images into a PDF file with this free online Image to PDF converter.',
     metaDesc: 'Convert JPG, PNG or WebP images into a PDF file with this free online Image to PDF converter.',
     h1: 'Image to PDF Converter',
-    status: 'working'
+    status: 'working',
+    icon: 'img2pdf.svg'
   },
   {
     id: 'text-to-image',
@@ -92,7 +99,8 @@ export const TOOLS: Tool[] = [
     description: 'Render text or code as a shareable PNG image with this free online Text to Image tool.',
     metaDesc: 'Render text or code as a shareable PNG image with this free online Text to Image tool.',
     h1: 'Text to Image Converter',
-    status: 'working'
+    status: 'working',
+    icon: 'txt2img.svg'
   },
 
   // Document Converter (7)
@@ -106,7 +114,8 @@ export const TOOLS: Tool[] = [
     metaDesc: 'Extract text from a JPG image into an editable Word document.',
     h1: 'JPG to Word Converter',
     limitation: 'Relies on client-side parsing; does not include full optical character recognition (OCR) for complex hand-written or low-resolution scans.',
-    status: 'partial'
+    status: 'partial',
+    icon: 'jpg2word.svg'
   },
   {
     id: 'text-to-word',
@@ -117,7 +126,8 @@ export const TOOLS: Tool[] = [
     description: 'Convert plain text into a Microsoft Word (.docx) document with this free online tool.',
     metaDesc: 'Convert plain text into a Microsoft Word (.docx) document with this free online tool.',
     h1: 'Text to Word Converter',
-    status: 'working'
+    status: 'working',
+    icon: 'txt2wrd.svg'
   },
   {
     id: 'excel-to-csv',
@@ -128,7 +138,8 @@ export const TOOLS: Tool[] = [
     description: 'Convert Excel workbooks (.xlsx, .xls) into standard CSV files.',
     metaDesc: 'Convert Excel workbooks (.xlsx, .xls) into standard CSV files.',
     h1: 'Excel to CSV Converter',
-    status: 'working'
+    status: 'working',
+    icon: 'excl2csv.svg'
   },
   {
     id: 'word-to-excel',
@@ -140,7 +151,8 @@ export const TOOLS: Tool[] = [
     metaDesc: 'Extract tables from a Word document into an Excel spreadsheet.',
     h1: 'Word to Excel Converter',
     limitation: 'Extracts paragraph text lines into rows; complex embedded document tables require clean formatting.',
-    status: 'partial'
+    status: 'partial',
+    icon: 'word2ecxcl.svg'
   },
   {
     id: 'word-to-jpg',
@@ -152,7 +164,8 @@ export const TOOLS: Tool[] = [
     metaDesc: 'Convert Word document pages into JPG images.',
     h1: 'Word to JPG Converter',
     limitation: 'Generates a styled document page snapshot rather than vector layout rendering.',
-    status: 'partial'
+    status: 'partial',
+    icon: 'wrd2jpg.svg'
   },
   {
     id: 'csv-to-excel',
@@ -163,7 +176,8 @@ export const TOOLS: Tool[] = [
     description: 'Convert CSV data into a formatted Excel (.xlsx) workbook.',
     metaDesc: 'Convert CSV data into a formatted Excel (.xlsx) workbook.',
     h1: 'CSV to Excel Converter',
-    status: 'working'
+    status: 'working',
+    icon: 'csv 2excl.svg'
   },
   {
     id: 'excel-to-pdf',
@@ -174,7 +188,8 @@ export const TOOLS: Tool[] = [
     description: 'Convert Excel spreadsheets into printable PDF documents.',
     metaDesc: 'Convert Excel spreadsheets into printable PDF documents.',
     h1: 'Excel to PDF Converter',
-    status: 'working'
+    status: 'working',
+    icon: 'excl2pdf.svg'
   }
 ];
 

@@ -1,0 +1,71 @@
+---
+import type { Tool } from '../data/tools';
+
+interface Props {
+  tool: Tool;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+}
+
+const { tool, size = 'md' } = Astro.props;
+
+// Size variants: tile size, radius, glyph size
+const sizeMap = {
+  sm: { tile: 'w-8 h-8', radius: 'rounded-[9px]', glyph: 'w-[18px] h-[18px]' }, // 32x32, radius 9px, glyph 18px (mega-menu)
+  md: { tile: 'w-11 h-11', radius: 'rounded-[12px]', glyph: 'w-[22px] h-[22px]' }, // 44x44, radius 12px, glyph 22px (mobile cards)
+  lg: { tile: 'w-12 h-12', radius: 'rounded-[14px]', glyph: 'w-6 h-6' }, // 48x48, radius 14px, glyph 24px (desktop cards)
+  xl: { tile: 'w-16 h-16', radius: 'rounded-[18px]', glyph: 'w-8 h-8' }, // 64x64, radius 18px, glyph 32px (tool page header)
+};
+
+// Get tile color based on category
+const getCategoryColor = (category: string): string => {
+  switch (category) {
+    case 'PDF Tools':
+      return 'bg-[#E5484D]'; // Red
+    case 'Image Tools':
+      return 'bg-[#7C5CF0]'; // Purple
+    case 'Document Converter':
+      return 'bg-[#2F6BFF]'; // Blue
+    default:
+      return 'bg-[#2F6BFF]';
+  }
+};
+
+const tileColor = getCategoryColor(tool.category);
+const sizeConfig = sizeMap[size] || sizeMap.md;
+---
+
+<div
+  class={`${sizeConfig.tile} ${sizeConfig.radius} ${tileColor} flex items-center justify-center shrink-0 transition-transform will-change-transform dark:ring-1 dark:ring-inset dark:ring-white/16`}
+  style={{
+    boxShadow: size === 'sm' ? 'none' : (
+      tool.category === 'PDF Tools'
+        ? '0 4px 12px rgb(229 72 77 / 0.28)'
+        : tool.category === 'Image Tools'
+        ? '0 4px 12px rgb(124 92 240 / 0.28)'
+        : '0 4px 12px rgb(47 107 255 / 0.28)'
+    )
+  }}
+  aria-hidden="true"
+>
+  <img
+    src={`/icons/${tool.icon}`}
+    alt=""
+    class={`${sizeConfig.glyph} flex-shrink-0`}
+    loading="lazy"
+    decoding="async"
+  />
+</div>
+
+<style>
+  @media (prefers-color-scheme: dark) {
+    div {
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    div {
+      transition: none !important;
+    }
+  }
+</style>
