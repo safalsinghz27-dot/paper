@@ -1,5 +1,6 @@
 ---
 import { TOOLS } from '../data/tools';
+import ToolIcon from './ToolIcon.astro';
 
 const pdfTools = TOOLS.filter(t => t.category === 'PDF Tools');
 const imageTools = TOOLS.filter(t => t.category === 'Image Tools');
@@ -50,9 +51,7 @@ const allToolsCols = splitIntoColumns(allTools);
                 <div class="space-y-2">
                   {pdfCols.left.map(tool => (
                     <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
-                      <div class="w-8 h-8 rounded-lg bg-[#171717] border border-[#2E2E2E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:border-purple-400 transition-colors">
-                        <img src={`/icons/${tool.icon}`} alt={tool.name} class="w-5 h-5" />
-                      </div>
+                      <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
                         <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-purple-400 transition-colors">{tool.name}</div>
                         <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
@@ -64,9 +63,7 @@ const allToolsCols = splitIntoColumns(allTools);
                 <div class="space-y-2">
                   {pdfCols.right.map(tool => (
                     <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
-                      <div class="w-8 h-8 rounded-lg bg-[#171717] border border-[#2E2E2E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:border-purple-400 transition-colors">
-                        <img src={`/icons/${tool.icon}`} alt={tool.name} class="w-5 h-5" />
-                      </div>
+                      <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
                         <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-purple-400 transition-colors">{tool.name}</div>
                         <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
@@ -95,9 +92,7 @@ const allToolsCols = splitIntoColumns(allTools);
                 <div class="space-y-2">
                   {imageCols.left.map(tool => (
                     <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
-                      <div class="w-8 h-8 rounded-lg bg-[#171717] border border-[#2E2E2E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:border-[#6E96FF] transition-colors">
-                        <img src={`/icons/${tool.icon}`} alt={tool.name} class="w-5 h-5" />
-                      </div>
+                      <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
                         <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
                         <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
@@ -109,9 +104,7 @@ const allToolsCols = splitIntoColumns(allTools);
                 <div class="space-y-2">
                   {imageCols.right.map(tool => (
                     <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
-                      <div class="w-8 h-8 rounded-lg bg-[#171717] border border-[#2E2E2E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:border-[#6E96FF] transition-colors">
-                        <img src={`/icons/${tool.icon}`} alt={tool.name} class="w-5 h-5" />
-                      </div>
+                      <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
                         <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
                         <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
@@ -140,9 +133,7 @@ const allToolsCols = splitIntoColumns(allTools);
                 <div class="space-y-2">
                   {convertCols.left.map(tool => (
                     <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
-                      <div class="w-8 h-8 rounded-lg bg-[#171717] border border-[#2E2E2E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:border-[#4778F5] transition-colors">
-                        <img src={`/icons/${tool.icon}`} alt={tool.name} class="w-5 h-5" />
-                      </div>
+                      <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
                         <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
                         <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
@@ -154,9 +145,7 @@ const allToolsCols = splitIntoColumns(allTools);
                 <div class="space-y-2">
                   {convertCols.right.map(tool => (
                     <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
-                      <div class="w-8 h-8 rounded-lg bg-[#171717] border border-[#2E2E2E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:border-[#4778F5] transition-colors">
-                        <img src={`/icons/${tool.icon}`} alt={tool.name} class="w-5 h-5" />
-                      </div>
+                      <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
                         <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
                         <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
@@ -185,9 +174,7 @@ const allToolsCols = splitIntoColumns(allTools);
                 <div class="space-y-2">
                   {allToolsCols.left.map(tool => (
                     <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
-                      <div class="w-8 h-8 rounded-lg bg-[#171717] border border-[#2E2E2E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:border-emerald-400 transition-colors">
-                        <img src={`/icons/${tool.icon}`} alt={tool.name} class="w-5 h-5" />
-                      </div>
+                      <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
                         <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-emerald-400 transition-colors">{tool.name}</div>
                         <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
@@ -199,9 +186,7 @@ const allToolsCols = splitIntoColumns(allTools);
                 <div class="space-y-2">
                   {allToolsCols.right.map(tool => (
                     <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
-                      <div class="w-8 h-8 rounded-lg bg-[#171717] border border-[#2E2E2E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:border-emerald-400 transition-colors">
-                        <img src={`/icons/${tool.icon}`} alt={tool.name} class="w-5 h-5" />
-                      </div>
+                      <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
                         <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-emerald-400 transition-colors">{tool.name}</div>
                         <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>

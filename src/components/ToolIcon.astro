@@ -16,50 +16,69 @@ const sizeMap = {
   xl: { tile: 'w-16 h-16', radius: 'rounded-[18px]', glyph: 'w-8 h-8' }, // 64x64, radius 18px, glyph 32px (tool page header)
 };
 
-// Get tile color based on category
-const getCategoryColor = (category: string): string => {
+// Get category identifier for CSS class
+const getCategoryClass = (category: string): string => {
   switch (category) {
     case 'PDF Tools':
-      return 'bg-[#E5484D]'; // Red
+      return 'icon-pdf';
     case 'Image Tools':
-      return 'bg-[#7C5CF0]'; // Purple
+      return 'icon-image';
     case 'Document Converter':
-      return 'bg-[#2F6BFF]'; // Blue
+      return 'icon-convert';
     default:
-      return 'bg-[#2F6BFF]';
+      return 'icon-convert';
   }
 };
 
-const tileColor = getCategoryColor(tool.category);
+const categoryClass = getCategoryClass(tool.category);
 const sizeConfig = sizeMap[size] || sizeMap.md;
 ---
 
 <div
-  class={`${sizeConfig.tile} ${sizeConfig.radius} ${tileColor} flex items-center justify-center shrink-0 transition-transform will-change-transform dark:ring-1 dark:ring-inset dark:ring-white/16`}
-  style={{
-    boxShadow: size === 'sm' ? 'none' : (
-      tool.category === 'PDF Tools'
-        ? '0 4px 12px rgb(229 72 77 / 0.28)'
-        : tool.category === 'Image Tools'
-        ? '0 4px 12px rgb(124 92 240 / 0.28)'
-        : '0 4px 12px rgb(47 107 255 / 0.28)'
-    )
-  }}
+  class={`${sizeConfig.tile} ${sizeConfig.radius} flex items-center justify-center shrink-0 transition-transform will-change-transform bg-white/8 ring-1 ring-inset ring-white/16`}
   aria-hidden="true"
 >
   <img
     src={`/icons/${tool.icon}`}
     alt=""
-    class={`${sizeConfig.glyph} flex-shrink-0`}
+    class={`${sizeConfig.glyph} flex-shrink-0 ${categoryClass}`}
     loading="lazy"
     decoding="async"
   />
 </div>
 
 <style>
-  @media (prefers-color-scheme: dark) {
+  /* Dark theme (default) - Lucide icons are naturally dark-colored, so recolor to category colors */
+  .icon-pdf {
+    filter: brightness(0) saturate(100%) invert(68%) sepia(82%) saturate(472%) hue-rotate(0deg);
+  }
+
+  .icon-image {
+    filter: brightness(0) saturate(100%) invert(70%) sepia(58%) saturate(1500%) hue-rotate(280deg);
+  }
+
+  .icon-convert {
+    filter: brightness(0) saturate(100%) invert(60%) sepia(95%) saturate(800%) hue-rotate(210deg);
+  }
+
+  /* Light theme backgrounds */
+  @media (prefers-color-scheme: light) {
     div {
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16) !important;
+      background-color: #F1F4FB;
+      border: 1px solid #E4E8F5;
+    }
+
+    /* Adjust filters for light theme - different base colors needed */
+    .icon-pdf {
+      filter: brightness(0) saturate(100%) invert(29%) sepia(74%) saturate(1200%) hue-rotate(352deg);
+    }
+
+    .icon-image {
+      filter: brightness(0) saturate(100%) invert(22%) sepia(78%) saturate(1700%) hue-rotate(260deg);
+    }
+
+    .icon-convert {
+      filter: brightness(0) saturate(100%) invert(18%) sepia(84%) saturate(1600%) hue-rotate(220deg);
     }
   }
 

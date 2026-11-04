@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ToolIcon from '../components/ToolIcon.astro';
 import { TOOLS } from '../data/tools';
 ---
 
@@ -235,9 +236,7 @@ import { TOOLS } from '../data/tools';
             data-desc={tool.shortDesc.toLowerCase()}
           >
             <div class="flex items-center justify-between">
-              <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-[#171717] border border-[#2E2E2E]">
-              <img src={`/icons/${tool.icon}`} alt={tool.name} class="w-5 h-5" />
-            </div>
+              <ToolIcon {tool} size="lg" />
               <span class="text-xs text-[#A3A3A3] group-hover:text-[#4778F5] group-hover:translate-x-0.5 transition-all">→</span>
             </div>
             <div>

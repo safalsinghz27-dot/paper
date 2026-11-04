@@ -9,13 +9,15 @@
   --color-text: #172033;
   --color-border: #DFE6F2;
 
-  /* Tool icon category colors (WCAG 3:1 contrast verified with white) */
-  --icon-pdf: #E5484D;      /* PDF Tools - red (#E5484D on white: 4.6:1; on dark: 4.8:1) */
-  --icon-image: #7C5CF0;    /* Image Tools - purple (#7C5CF0 on white: 5.2:1; on dark: 5.4:1) */
-  --icon-convert: #2F6BFF;  /* Convert Tools - blue (#2F6BFF on white: 4.7:1; on dark: 4.9:1) */
-  --icon-glyph: #FFFFFF;    /* White glyph */
-  --icon-accent-green: #1F9D6B;
-  --icon-accent-yellow: #FFC21A;
+  /* Tool icon glyph colors (dark theme) - stroke-based icons on neutral tiles */
+  --icon-glyph-pdf-dark: #FF6B6F;      /* PDF Tools - dark red */
+  --icon-glyph-image-dark: #A58BFF;    /* Image Tools - dark purple */
+  --icon-glyph-convert-dark: #5B8CFF;  /* Convert Tools - dark blue */
+
+  /* Tool icon glyph colors (light theme) - stroke-based icons on neutral tiles */
+  --icon-glyph-pdf-light: #D92D33;     /* PDF Tools - light red */
+  --icon-glyph-image-light: #6D4AE0;   /* Image Tools - light purple */
+  --icon-glyph-convert-light: #1F57E6; /* Convert Tools - light blue */
 }
 
 @layer base {
@@ -26,10 +28,6 @@
   }
 }
 
-/* Remove old icon filter styling */
-img[src*="/icons/"] {
-  filter: none !important;
-}
 
 
 
