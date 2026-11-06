@@ -9,25 +9,20 @@ import { TOOLS } from '../data/tools';
 <Layout title="CipherPDF — Secure Browser-Based PDF & Document Utilities" description="Lightning-fast, private, secure browser-based document utilities. Convert, extract, repair, and manipulate PDF, Word, Excel, CSV, JPG, and Text files instantly in your browser with zero server uploads.">
   <Header />
 
-  <!-- CONTINUOUS TOP AREA (Hero + Category Cards + Trust Strip) -->
-  <div class="bg-[#171717] border-b border-[#2E2E2E]/60">
-    <main class="max-w-[1440px] mx-auto px-10 py-10 space-y-8">
+  <!-- CONTINUOUS TOP AREA (Hero + Category Cards) -->
+  <div class="bg-[#171717]">
+    <main class="max-w-[1440px] mx-auto px-10 py-10 space-y-18">
 
       <!-- SECTION 2 — HERO -->
       <section class="relative w-full rounded-2xl overflow-hidden" style="aspect-ratio: 21/9;">
         <!-- Background Image -->
         <img src="/hero-illustration.webp" alt="Document conversion illustration" class="absolute inset-0 w-full h-full object-cover" />
 
-        <!-- Overlay Gradient (optional for better text readability) -->
-        <div class="absolute inset-0 bg-gradient-to-r from-[#171717]/95 via-[#171717]/80 to-transparent"></div>
+        <!-- Overlay Gradient (reduced black overlay by ~90%) -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#171717]/10 via-transparent to-transparent"></div>
 
-        <!-- Content Overlay -->
-        <div class="relative h-full flex flex-col justify-center px-10 sm:px-12 lg:px-16 py-8 max-w-2xl">
-          <!-- Badge -->
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1F1F1F]/80 border border-[#2E2E2E] text-xs font-mono text-[#EDEDED] w-fit mb-4">
-            <span class="w-2 h-2 rounded-full bg-[#1b8ae6] animate-pulse"></span>
-            Secure Client-Side Document Utilities
-          </div>
+        <!-- Content Overlay (Left-aligned) -->
+        <div class="relative h-full flex flex-col justify-center px-10 sm:px-12 lg:px-16 py-8 max-w-2xl text-left">
 
           <!-- Heading -->
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#EDEDED] leading-[1.15] mb-4">
@@ -40,7 +35,7 @@ import { TOOLS } from '../data/tools';
           </p>
 
           <!-- Search Bar -->
-          <div class="max-w-2xl mb-4">
+          <div class="max-w-xl mb-4">
             <div class="relative flex items-center bg-[#0F1F3C]/60 backdrop-blur-md border border-[#1b8ae6]/30 rounded-full h-14 shadow-lg focus-within:border-[#1b8ae6]/60 focus-within:bg-[#0F1F3C]/80 transition-all">
               <svg class="absolute left-5 w-4 h-4 text-[#1b8ae6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -57,31 +52,15 @@ import { TOOLS } from '../data/tools';
             </div>
           </div>
 
-          <!-- Popular Tools Tags -->
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="text-xs font-medium text-[#A3A3A3]">Popular:</span>
-            <a href="/tools/pdf-to-word" class="px-3 py-1.5 rounded-full bg-[#1F1F1F]/80 border border-[#2E2E2E] text-xs text-[#EDEDED] hover:border-[#1b8ae6] transition-colors">
-              PDF to Word
-            </a>
-            <a href="/tools/compress-pdf" class="px-3 py-1.5 rounded-full bg-[#1F1F1F]/80 border border-[#2E2E2E] text-xs text-[#EDEDED] hover:border-[#1b8ae6] transition-colors">
-              Compress PDF
-            </a>
-            <a href="/tools/image-to-pdf" class="px-3 py-1.5 rounded-full bg-[#1F1F1F]/80 border border-[#2E2E2E] text-xs text-[#EDEDED] hover:border-[#1b8ae6] transition-colors">
-              Image to PDF
-            </a>
-          </div>
         </div>
       </section>
 
       <!-- SECTION 3 — FOUR CATEGORY CARDS (TinyWow / Reference Style) -->
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 relative">
-        <!-- Floating Crystal Decorations -->
-        <div class="absolute -top-6 -left-6 w-8 h-8 rounded-lg bg-[#6c4df0]/20 rotate-12 blur-[1px] animate-pulse pointer-events-none" aria-hidden="true"></div>
-        <div class="absolute -bottom-6 -right-6 w-10 h-10 rounded-xl bg-[#1b8ae6]/25 -rotate-12 blur-[1px] animate-pulse pointer-events-none" aria-hidden="true"></div>
 
         <!-- 1. PDF Tools - Cyan -->
         <a href="/tools?cat=PDF" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#06B6D4]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-5 bg-gradient-to-b from-[#06B6D4] to-[#0891B2] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
+          <div class="p-6 bg-gradient-to-b from-[#06B6D4] to-[#0891B2] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/document-text-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="PDF Tools" />
@@ -106,7 +85,7 @@ import { TOOLS } from '../data/tools';
 
         <!-- 2. Image Tools - Teal -->
         <a href="/tools?cat=Image" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#0D9488]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-5 bg-gradient-to-b from-[#0D9488] to-[#0F766E] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
+          <div class="p-6 bg-gradient-to-b from-[#0D9488] to-[#0F766E] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/image-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Image Tools" />
@@ -131,7 +110,7 @@ import { TOOLS } from '../data/tools';
 
         <!-- 3. Convert Tools - Coral Pink -->
         <a href="/tools?cat=Document Converter" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#F472B6]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-5 bg-gradient-to-b from-[#F472B6] to-[#EC4899] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
+          <div class="p-6 bg-gradient-to-b from-[#F472B6] to-[#EC4899] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/multiple-documents-files-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Convert Tools" />
@@ -156,7 +135,7 @@ import { TOOLS } from '../data/tools';
 
         <!-- 4. All Tools - Indigo -->
         <a href="/tools" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#6366F1]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-5 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] flex flex-col justify-between h-[110px] text-white relative overflow-hidden">
+          <div class="p-6 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/grid-layout-svgrepo-com-3.svg" class="w-full h-full object-contain brightness-0 invert" alt="All Tools" />
@@ -180,57 +159,56 @@ import { TOOLS } from '../data/tools';
         </a>
       </section>
 
-      <!-- SECTION 4 — TRUST / STATISTICS SECTION (Horizontal Stats Bar Style) -->
-      <section class="bg-[#242424] border border-[#2E2E2E] rounded-xl h-[72px] px-7 flex items-center justify-between shadow-lg">
-        <!-- Item 1: Fast Conversion -->
-        <div class="flex items-center gap-3 flex-1 justify-center">
-          <div class="w-7 h-7 rounded-lg bg-transparent flex items-center justify-center p-1.5 shrink-0">
-            <img src="/assets/zap-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Fast Conversion" />
-          </div>
-          <div class="flex flex-col">
-            <span class="text-[12px] font-bold text-[#1b8ae6] leading-tight">Fast Conversion</span>
-            <span class="text-[11px] font-medium text-white/90 leading-tight">Instant browser processing</span>
-          </div>
-        </div>
-        <div class="w-[1px] h-8 bg-white/15"></div>
-
-        <!-- Item 2: Secure Processing -->
-        <div class="flex items-center gap-3 flex-1 justify-center">
-          <div class="w-7 h-7 rounded-lg bg-transparent flex items-center justify-center p-1.5 shrink-0">
-            <img src="/assets/shield-tick-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Secure Processing" />
-          </div>
-          <div class="flex flex-col">
-            <span class="text-[12px] font-bold text-[#1b8ae6] leading-tight">Secure Processing</span>
-            <span class="text-[11px] font-medium text-white/90 leading-tight">100% client-side privacy</span>
-          </div>
-        </div>
-        <div class="w-[1px] h-8 bg-white/15"></div>
-
-        <!-- Item 3: Multiple Formats -->
-        <div class="flex items-center gap-3 flex-1 justify-center">
-          <div class="w-7 h-7 rounded-lg bg-transparent flex items-center justify-center p-1.5 shrink-0">
-            <img src="/assets/multiple-file-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Multiple Formats" />
-          </div>
-          <div class="flex flex-col">
-            <span class="text-[12px] font-bold text-[#1b8ae6] leading-tight">Multiple Formats</span>
-            <span class="text-[11px] font-medium text-white/90 leading-tight">PDF, Word, Excel, JPG & more</span>
-          </div>
-        </div>
-        <div class="w-[1px] h-8 bg-white/15"></div>
-
-        <!-- Item 4: Free to Use -->
-        <div class="flex items-center gap-3 flex-1 justify-center">
-          <div class="w-7 h-7 rounded-lg bg-transparent flex items-center justify-center p-1.5 shrink-0">
-            <img src="/assets/gift-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Free to Use" />
-          </div>
-          <div class="flex flex-col">
-            <span class="text-[12px] font-bold text-[#1b8ae6] leading-tight">Free to Use</span>
-            <span class="text-[11px] font-medium text-white/90 leading-tight">No subscription or sign-up</span>
-          </div>
-        </div>
-      </section>
-
     </main>
+  </div>
+
+  <!-- TRUST SECTION WRAPPER (Centered with visible margins, approx 88% width max 1200px, rounded-3xl / 24px) -->
+  <div class="bg-[#171717] pt-12 pb-12 px-6">
+    <!-- SECTION 4 — TRUST / STATISTICS SECTION -->
+    <section class="max-w-[1200px] w-[88%] mx-auto bg-[#242424] border border-[#2E2E2E] rounded-[24px] px-8 py-6 flex items-center justify-between shadow-lg">
+      <!-- Item 1: Fast Conversion -->
+      <div class="flex items-center gap-3.5 flex-1 justify-center">
+        <div class="w-10 h-10 rounded-lg bg-transparent flex items-center justify-center shrink-0">
+          <img src="/assets/zap-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Fast Conversion" />
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[13px] font-bold text-[#1b8ae6] leading-tight">Fast Conversion</span>
+        </div>
+      </div>
+      <div class="w-[1px] h-8 bg-white/15"></div>
+
+      <!-- Item 2: Secure Processing -->
+      <div class="flex items-center gap-3.5 flex-1 justify-center">
+        <div class="w-10 h-10 rounded-lg bg-transparent flex items-center justify-center shrink-0">
+          <img src="/assets/shield-tick-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Secure Processing" />
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[13px] font-bold text-[#1b8ae6] leading-tight">Secure Processing</span>
+        </div>
+      </div>
+      <div class="w-[1px] h-8 bg-white/15"></div>
+
+      <!-- Item 3: Multiple Formats -->
+      <div class="flex items-center gap-3.5 flex-1 justify-center">
+        <div class="w-10 h-10 rounded-lg bg-transparent flex items-center justify-center shrink-0">
+          <img src="/assets/multiple-file-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Multiple Formats" />
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[13px] font-bold text-[#1b8ae6] leading-tight">Multiple Formats</span>
+        </div>
+      </div>
+      <div class="w-[1px] h-8 bg-white/15"></div>
+
+      <!-- Item 4: Free to Use -->
+      <div class="flex items-center gap-3.5 flex-1 justify-center">
+        <div class="w-10 h-10 rounded-lg bg-transparent flex items-center justify-center shrink-0">
+          <img src="/assets/gift-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Free to Use" />
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[13px] font-bold text-[#1b8ae6] leading-tight">Free to Use</span>
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- SECTION 5 — MOST POPULAR TOOLS (bg #242424 with abstract waves) -->
@@ -274,7 +252,7 @@ import { TOOLS } from '../data/tools';
         {TOOLS.map((tool, index) => (
           <a
             href={`/tools/${tool.slug}`}
-            class={`hub-card group bg-[#1f2a35] rounded-xl p-4 border border-white/[0.03] hover:border-[#1b8ae6]/35 hover:bg-[#243240] hover:-translate-y-0.5 transition-all flex flex-col justify-between ${index >= 12 ? 'hidden extra-tool' : ''}`}
+            class={`hub-card group bg-[#171717] rounded-xl p-4 border border-white/[0.03] hover:border-[#1b8ae6]/35 hover:bg-[#243240] hover:-translate-y-0.5 transition-all flex flex-col justify-between ${index >= 12 ? 'hidden extra-tool' : ''}`}
             data-category={tool.category}
             data-name={tool.name.toLowerCase()}
             data-desc={tool.shortDesc.toLowerCase()}
@@ -284,7 +262,7 @@ import { TOOLS } from '../data/tools';
                 <ToolIcon {tool} size="sm" />
               </div>
               <div class="min-w-0 flex-1">
-                <h3 class="text-[13px] font-bold text-white group-hover:text-[#1b8ae6] transition-colors truncate">{tool.name}</h3>
+                <h3 class="text-[13px] font-bold text-white transition-colors truncate">{tool.name}</h3>
                 <span class={`text-[10px] font-medium block mt-0.5 ${tool.category === 'PDF Tools' ? 'text-[#ff5c7c]' : tool.category === 'Image Tools' ? 'text-[#4fd8d0]' : 'text-[#a78bfa]'}`}>{tool.category}</span>
               </div>
             </div>
