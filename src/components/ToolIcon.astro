@@ -10,10 +10,10 @@ const { tool, size = 'md' } = Astro.props;
 
 // Size variants: tile size, radius, glyph size
 const sizeMap = {
-  sm: { tile: 'w-8 h-8', radius: 'rounded-[9px]', glyph: 'w-[18px] h-[18px]' }, // 32x32, radius 9px, glyph 18px (mega-menu)
-  md: { tile: 'w-11 h-11', radius: 'rounded-[12px]', glyph: 'w-[22px] h-[22px]' }, // 44x44, radius 12px, glyph 22px (mobile cards)
-  lg: { tile: 'w-12 h-12', radius: 'rounded-[14px]', glyph: 'w-6 h-6' }, // 48x48, radius 14px, glyph 24px (desktop cards)
-  xl: { tile: 'w-16 h-16', radius: 'rounded-[18px]', glyph: 'w-8 h-8' }, // 64x64, radius 18px, glyph 32px (tool page header)
+  sm: { tile: 'w-8 h-8', radius: 'rounded-[9px]', glyph: 'w-[22px] h-[22px]' }, // 32x32, radius 9px, glyph increased by ~25% (18px -> 22px)
+  md: { tile: 'w-11 h-11', radius: 'rounded-[12px]', glyph: 'w-[28px] h-[28px]' }, // 44x44, radius 12px, glyph increased by ~25% (22px -> 28px)
+  lg: { tile: 'w-12 h-12', radius: 'rounded-[14px]', glyph: 'w-[30px] h-[30px]' }, // 48x48, radius 14px, glyph increased by ~25% (24px -> 30px)
+  xl: { tile: 'w-16 h-16', radius: 'rounded-[18px]', glyph: 'w-10 h-10' }, // 64x64, radius 18px, glyph increased by ~25% (32px -> 40px)
 };
 
 // Get category identifier for CSS class
@@ -35,7 +35,7 @@ const sizeConfig = sizeMap[size] || sizeMap.md;
 ---
 
 <div
-  class={`${sizeConfig.tile} ${sizeConfig.radius} flex items-center justify-center shrink-0 transition-transform will-change-transform bg-white/8 ring-1 ring-inset ring-white/16`}
+  class={`${sizeConfig.tile} ${sizeConfig.radius} flex items-center justify-center shrink-0 transition-transform will-change-transform bg-[rgba(36,36,36,0.5)]`}
   aria-hidden="true"
 >
   <img
