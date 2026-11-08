@@ -15,11 +15,13 @@ import { TOOLS } from '../data/tools';
 
       <!-- SECTION 2 — HERO -->
       <section class="relative w-full rounded-2xl overflow-hidden" style="aspect-ratio: 21/9;">
-        <!-- Background Image -->
-        <img src="/hero-illustration.webp" alt="Document conversion illustration" class="absolute inset-0 w-full h-full object-cover" />
+        <!-- Background Image (Dark Mode) -->
+        <img src="/hero-illustration.webp" alt="Document conversion illustration" class="absolute inset-0 w-full h-full object-cover hero-img-dark hidden dark:block" />
+        <!-- Background Image (Light Mode) -->
+        <img src="/Light_Theme_Document_Icon_Set_Aligned.webp" alt="Document conversion illustration" class="absolute inset-0 w-full h-full object-contain object-center hero-img-light block dark:hidden" />
 
-        <!-- Overlay Gradient (reduced black overlay by ~90%) -->
-        <div class="absolute inset-0 bg-gradient-to-r from-[#171717]/10 via-transparent to-transparent"></div>
+        <!-- Overlay Gradient (removed) -->
+        <div class="absolute inset-0 bg-transparent"></div>
 
         <!-- Content Overlay (Left-aligned) -->
         <div class="relative h-full flex flex-col justify-center px-10 sm:px-12 lg:px-16 py-8 max-w-2xl text-left">
@@ -36,7 +38,7 @@ import { TOOLS } from '../data/tools';
 
           <!-- Search Bar -->
           <div class="max-w-xl mb-4">
-            <div class="relative flex items-center bg-[#0F1F3C]/60 backdrop-blur-md border border-[#1b8ae6]/30 rounded-full h-14 shadow-lg focus-within:border-[#1b8ae6]/60 focus-within:bg-[#0F1F3C]/80 transition-all">
+            <div class="hero-search-wrapper relative flex items-center bg-[#0F1F3C]/60 backdrop-blur-md border border-[#1b8ae6]/30 rounded-full h-14 shadow-lg focus-within:border-[#1b8ae6]/60 focus-within:bg-[#0F1F3C]/80 transition-all">
               <svg class="absolute left-5 w-4 h-4 text-[#1b8ae6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
               </svg>
@@ -44,7 +46,7 @@ import { TOOLS } from '../data/tools';
                 type="text"
                 id="hero-search"
                 placeholder="Search tools..."
-                class="w-full bg-transparent pl-13 pr-4 text-sm text-[#EDEDED] placeholder-[#6B8DD6] focus:outline-none"
+                class="hero-search-input w-full bg-transparent pl-13 pr-4 text-sm text-[#EDEDED] placeholder-[#6B8DD6] focus:outline-none"
               />
               <a href="/tools" class="mr-2 px-6 py-2.5 rounded-full bg-[#1b8ae6] text-white text-xs font-medium hover:bg-[#1572c0] transition-colors shrink-0">
                 Search
@@ -59,8 +61,8 @@ import { TOOLS } from '../data/tools';
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 relative">
 
         <!-- 1. PDF Tools - Cyan -->
-        <a href="/tools?cat=PDF" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#06B6D4]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-6 bg-gradient-to-b from-[#06B6D4] to-[#0891B2] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
+        <a href="/tools?cat=PDF" class="cat-card cat-card-pdf group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#06B6D4]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
+          <div class="cat-card-top p-6 bg-gradient-to-b from-[#06B6D4] to-[#0891B2] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/document-text-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="PDF Tools" />
@@ -75,17 +77,17 @@ import { TOOLS } from '../data/tools';
               <span class="text-white/80 group-hover:translate-x-1 transition-transform">→</span>
             </div>
           </div>
-          <div class="p-3 bg-[#19222b]">
-            <div class="bg-[#06B6D4]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
-              <span class="text-white/70 font-medium">Featured Tool :</span>
-              <span class="text-[#06B6D4] font-bold">Text to PDF</span>
+          <div class="cat-card-bottom p-3 bg-[#19222b]">
+            <div class="cat-card-strip bg-[#06B6D4]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
+              <span class="cat-card-label text-white/70 font-medium">Featured Tool :</span>
+              <span class="cat-card-name text-[#06B6D4] font-bold">Text to PDF</span>
             </div>
           </div>
         </a>
 
         <!-- 2. Image Tools - Teal -->
-        <a href="/tools?cat=Image" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#0D9488]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-6 bg-gradient-to-b from-[#0D9488] to-[#0F766E] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
+        <a href="/tools?cat=Image" class="cat-card cat-card-img group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#0D9488]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
+          <div class="cat-card-top p-6 bg-gradient-to-b from-[#0D9488] to-[#0F766E] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/image-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Image Tools" />
@@ -100,17 +102,17 @@ import { TOOLS } from '../data/tools';
               <span class="text-white/80 group-hover:translate-x-1 transition-transform">→</span>
             </div>
           </div>
-          <div class="p-3 bg-[#19222b]">
-            <div class="bg-[#0D9488]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
-              <span class="text-white/70 font-medium">Featured Tool :</span>
-              <span class="text-[#0D9488] font-bold">Image to PDF</span>
+          <div class="cat-card-bottom p-3 bg-[#19222b]">
+            <div class="cat-card-strip bg-[#0D9488]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
+              <span class="cat-card-label text-white/70 font-medium">Featured Tool :</span>
+              <span class="cat-card-name text-[#0D9488] font-bold">Image to PDF</span>
             </div>
           </div>
         </a>
 
         <!-- 3. Convert Tools - Coral Pink -->
-        <a href="/tools?cat=Document Converter" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#F472B6]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-6 bg-gradient-to-b from-[#F472B6] to-[#EC4899] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
+        <a href="/tools?cat=Document Converter" class="cat-card cat-card-cnv group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#F472B6]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
+          <div class="cat-card-top p-6 bg-gradient-to-b from-[#F472B6] to-[#EC4899] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/multiple-documents-files-svgrepo-com.svg" class="w-full h-full object-contain brightness-0 invert" alt="Convert Tools" />
@@ -125,17 +127,17 @@ import { TOOLS } from '../data/tools';
               <span class="text-white/80 group-hover:translate-x-1 transition-transform">→</span>
             </div>
           </div>
-          <div class="p-3 bg-[#19222b]">
-            <div class="bg-[#F472B6]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
-              <span class="text-white/70 font-medium">Featured Tool :</span>
-              <span class="text-[#F472B6] font-bold">JPG to Word</span>
+          <div class="cat-card-bottom p-3 bg-[#19222b]">
+            <div class="cat-card-strip bg-[#F472B6]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
+              <span class="cat-card-label text-white/70 font-medium">Featured Tool :</span>
+              <span class="cat-card-name text-[#F472B6] font-bold">JPG to Word</span>
             </div>
           </div>
         </a>
 
         <!-- 4. All Tools - Indigo -->
-        <a href="/tools" class="group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#6366F1]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
-          <div class="p-6 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
+        <a href="/tools" class="cat-card cat-card-all group relative rounded-xl overflow-hidden bg-[#19222b] border border-[#293847] hover:border-[#6366F1]/50 hover:-translate-y-1 transition-all duration-200 shadow-xl flex flex-col">
+          <div class="cat-card-top p-6 bg-gradient-to-b from-[#6366F1] to-[#4F46E5] flex flex-col justify-between h-[145px] text-white relative overflow-hidden">
             <div class="flex items-center justify-between">
               <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center p-2">
                 <img src="/assets/grid-layout-svgrepo-com-3.svg" class="w-full h-full object-contain brightness-0 invert" alt="All Tools" />
@@ -150,10 +152,10 @@ import { TOOLS } from '../data/tools';
               <span class="text-white/80 group-hover:translate-x-1 transition-transform">→</span>
             </div>
           </div>
-          <div class="p-3 bg-[#19222b]">
-            <div class="bg-[#6366F1]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
-              <span class="text-white/70 font-medium">Featured Tool :</span>
-              <span class="text-[#6366F1] font-bold">All Utilities</span>
+          <div class="cat-card-bottom p-3 bg-[#19222b]">
+            <div class="cat-card-strip bg-[#6366F1]/15 rounded-lg px-3 py-2 flex items-center justify-between text-[11px]">
+              <span class="cat-card-label text-white/70 font-medium">Featured Tool :</span>
+              <span class="cat-card-name text-[#6366F1] font-bold">All Utilities</span>
             </div>
           </div>
         </a>
@@ -165,7 +167,7 @@ import { TOOLS } from '../data/tools';
   <!-- TRUST SECTION WRAPPER (Centered with visible margins, approx 88% width max 1200px, rounded-3xl / 24px) -->
   <div class="bg-[#171717] pt-12 pb-12 px-6">
     <!-- SECTION 4 — TRUST / STATISTICS SECTION -->
-    <section class="max-w-[1200px] w-[88%] mx-auto bg-[#242424] border border-[#2E2E2E] rounded-[24px] px-8 py-6 flex items-center justify-between shadow-lg">
+    <section class="trust-section max-w-[1200px] w-[88%] mx-auto bg-[#242424] border border-[#2E2E2E] rounded-[24px] px-8 py-6 flex items-center justify-between shadow-lg">
       <!-- Item 1: Fast Conversion -->
       <div class="flex items-center gap-3.5 flex-1 justify-center">
         <div class="w-10 h-10 rounded-lg bg-[#242424]/50 flex items-center justify-center shrink-0">
@@ -212,7 +214,7 @@ import { TOOLS } from '../data/tools';
   </div>
 
   <!-- SECTION 5 — MOST POPULAR TOOLS (bg #242424 with abstract waves) -->
-  <section class="bg-[#242424] relative overflow-hidden py-16 border-b border-[#2E2E2E]">
+  <section class="popular-tools-section bg-[#242424] relative overflow-hidden py-16 border-b border-[#2E2E2E]">
     <!-- Abstract Wave Background SVG -->
     <div class="absolute inset-0 pointer-events-none opacity-20 overflow-hidden">
       <svg class="w-full h-full text-[#334659]" viewBox="0 0 1440 600" fill="none" preserveAspectRatio="none">
@@ -252,21 +254,21 @@ import { TOOLS } from '../data/tools';
         {TOOLS.map((tool, index) => (
           <a
             href={`/tools/${tool.slug}`}
-            class={`hub-card group bg-[#171717] rounded-xl p-4 border border-white/[0.03] hover:border-[#1b8ae6]/35 hover:bg-[#243240] hover:-translate-y-0.5 transition-all flex flex-col justify-between ${index >= 12 ? 'hidden extra-tool' : ''}`}
+            class={`hub-card group bg-[#D7E2F7] dark:bg-[#171717] rounded-xl p-4 border border-[#B8C9E5] dark:border-white/[0.03] hover:border-[#1C67CA] dark:hover:border-[#1b8ae6]/35 hover:bg-[#D7E5FA] dark:hover:bg-[#243240] hover:-translate-y-0.5 transition-all flex flex-col justify-between ${index >= 12 ? 'hidden extra-tool' : ''}`}
             data-category={tool.category}
             data-name={tool.name.toLowerCase()}
             data-desc={tool.shortDesc.toLowerCase()}
           >
             <div class="flex items-start gap-3">
-              <div class="w-[34px] h-[34px] rounded-lg bg-[#3a4756] flex items-center justify-center shrink-0">
+              <div class={`w-[34px] h-[34px] rounded-lg bg-[#30343D] dark:bg-[#3a4756] flex items-center justify-center shrink-0 ${tool.category === 'PDF Tools' ? 'popular-tile-pdf' : tool.category === 'Image Tools' ? 'popular-tile-image' : 'popular-tile-convert'}`}>
                 <ToolIcon {tool} size="sm" />
               </div>
               <div class="min-w-0 flex-1">
-                <h3 class="text-[13px] font-bold text-white transition-colors truncate">{tool.name}</h3>
-                <span class={`text-[10px] font-medium block mt-0.5 ${tool.category === 'PDF Tools' ? 'text-[#ff5c7c]' : tool.category === 'Image Tools' ? 'text-[#4fd8d0]' : 'text-[#a78bfa]'}`}>{tool.category}</span>
+                <h3 class="text-[13px] font-bold text-[#172554] dark:text-white group-hover:text-[#123F80] transition-colors truncate">{tool.name}</h3>
+                <span class={`text-[10px] font-medium block mt-0.5 text-[#1C67CA] dark:${tool.category === 'PDF Tools' ? 'text-[#ff5c7c]' : tool.category === 'Image Tools' ? 'text-[#4fd8d0]' : 'text-[#a78bfa]'}`}>{tool.category}</span>
               </div>
             </div>
-            <p class="text-[12px] text-[#7f8c99] leading-snug line-clamp-2 mt-3">{tool.shortDesc}</p>
+            <p class="text-[12px] text-[#475569] dark:text-[#7f8c99] group-hover:text-[#334155] leading-snug line-clamp-2 mt-3">{tool.shortDesc}</p>
           </a>
         ))}
       </div>
@@ -289,7 +291,7 @@ import { TOOLS } from '../data/tools';
   <!-- OTHER SECTIONS (Why Choose, FAQ, Footer kept intact as per rules) -->
   <main class="max-w-[1440px] mx-auto px-10 py-16 space-y-16">
     <!-- SECTION — WHY CHOOSE CIPHERPDF -->
-    <section class="bg-[#242424] border border-[#2E2E2E] rounded-2xl p-8 lg:p-12 shadow-xl">
+    <section class="why-choose-section bg-[#242424] border border-[#2E2E2E] rounded-2xl p-8 lg:p-12 shadow-xl">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <div class="lg:col-span-7 space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#171717] border border-[#2E2E2E] text-[10px] font-mono text-[#6E96FF] uppercase tracking-wider font-semibold">
@@ -316,15 +318,16 @@ import { TOOLS } from '../data/tools';
         </div>
 
         <div class="lg:col-span-5">
-          <div class="bg-[#242424] rounded-xl overflow-hidden flex items-center justify-center shadow-inner p-4">
-            <img src="/trust-workflow.webp" alt="Document Conversion Workflow" class="w-[105%] h-[105%] max-w-none object-contain scale-[1.05]" />
+          <div class="bg-[#E5EDFC] rounded-xl overflow-hidden flex items-center justify-center shadow-inner p-0">
+            <img src="/trust-workflow.webp" alt="Document Conversion Workflow" class="w-[105%] h-[105%] max-w-none object-contain scale-[1.05] why-img-dark hidden dark:block" />
+            <img src="/1000271794.webp" alt="Document Conversion Workflow" class="w-[105%] h-[105%] max-w-none object-contain scale-[1.05] why-img-light block dark:hidden" />
           </div>
         </div>
       </div>
     </section>
 
     <!-- SECTION — FAQ -->
-    <section class="bg-[#1F1F1F] border border-[#2E2E2E] rounded-2xl p-8 lg:p-12 space-y-6">
+    <section class="faq-section bg-[#242424] border border-[#2E2E2E] rounded-2xl p-8 lg:p-12 space-y-6">
       <div class="text-center space-y-2">
         <h2 class="text-3xl font-semibold tracking-tight text-[#EDEDED]">Frequently Asked Questions</h2>
         <p class="text-xs text-[#EDEDED]">Everything you need to know about secure browser-based document utilities.</p>

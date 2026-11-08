@@ -44,17 +44,17 @@ const allToolsCols = splitIntoColumns(allTools);
             </svg>
           </button>
           <div class="absolute top-full left-0 pt-2 w-[600px] opacity-0 translate-y-2 pointer-events-none group-hover/dropdown:opacity-100 group-hover/dropdown:translate-y-0 group-hover/dropdown:pointer-events-auto transition-all duration-200 z-50">
-            <div class="bg-[#1F1F1F] border border-[#2E2E2E] rounded-2xl p-4 shadow-2xl">
-              <div class="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-purple-400 font-bold border-b border-[#2E2E2E] mb-3">PDF Utilities ({pdfTools.length})</div>
+            <div class="nav-dropdown bg-[#1F1F1F] border border-[#2E2E2E] rounded-2xl p-4 shadow-2xl">
+              <div class="nav-dropdown-heading px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-purple-400 font-bold border-b border-[#2E2E2E] mb-3">PDF Utilities ({pdfTools.length})</div>
               <div class="grid grid-cols-2 gap-x-6 gap-y-2">
                 <!-- Left Column -->
                 <div class="space-y-2">
                   {pdfCols.left.map(tool => (
-                    <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
+                    <a href={`/tools/${tool.slug}`} class="nav-dropdown-item flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
                       <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
-                        <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-purple-400 transition-colors">{tool.name}</div>
-                        <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
+                        <div class="nav-tool-name text-xs font-semibold text-[#EDEDED] group-hover/item:text-purple-400 transition-colors">{tool.name}</div>
+                        <div class="nav-tool-desc text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
                       </div>
                     </a>
                   ))}
@@ -62,11 +62,11 @@ const allToolsCols = splitIntoColumns(allTools);
                 <!-- Right Column -->
                 <div class="space-y-2">
                   {pdfCols.right.map(tool => (
-                    <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
+                    <a href={`/tools/${tool.slug}`} class="nav-dropdown-item flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
                       <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
-                        <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-purple-400 transition-colors">{tool.name}</div>
-                        <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
+                        <div class="nav-tool-name text-xs font-semibold text-[#EDEDED] group-hover/item:text-purple-400 transition-colors">{tool.name}</div>
+                        <div class="nav-tool-desc text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
                       </div>
                     </a>
                   ))}
@@ -85,17 +85,17 @@ const allToolsCols = splitIntoColumns(allTools);
             </svg>
           </button>
           <div class="absolute top-full left-0 pt-2 w-[600px] opacity-0 translate-y-2 pointer-events-none group-hover/dropdown:opacity-100 group-hover/dropdown:translate-y-0 group-hover/dropdown:pointer-events-auto transition-all duration-200 z-50">
-            <div class="bg-[#1F1F1F] border border-[#2E2E2E] rounded-2xl p-4 shadow-2xl">
-              <div class="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-[#6E96FF] font-bold border-b border-[#2E2E2E] mb-3">Image Utilities ({imageTools.length})</div>
+            <div class="nav-dropdown bg-[#1F1F1F] border border-[#2E2E2E] rounded-2xl p-4 shadow-2xl">
+              <div class="nav-dropdown-heading px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-[#6E96FF] font-bold border-b border-[#2E2E2E] mb-3">Image Utilities ({imageTools.length})</div>
               <div class="grid grid-cols-2 gap-x-6 gap-y-2">
                 <!-- Left Column -->
                 <div class="space-y-2">
                   {imageCols.left.map(tool => (
-                    <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
+                    <a href={`/tools/${tool.slug}`} class="nav-dropdown-item flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
                       <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
-                        <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
-                        <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
+                        <div class="nav-tool-name text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
+                        <div class="nav-tool-desc text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
                       </div>
                     </a>
                   ))}
@@ -103,11 +103,11 @@ const allToolsCols = splitIntoColumns(allTools);
                 <!-- Right Column -->
                 <div class="space-y-2">
                   {imageCols.right.map(tool => (
-                    <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
+                    <a href={`/tools/${tool.slug}`} class="nav-dropdown-item flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
                       <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
-                        <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
-                        <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
+                        <div class="nav-tool-name text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
+                        <div class="nav-tool-desc text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
                       </div>
                     </a>
                   ))}
@@ -126,17 +126,17 @@ const allToolsCols = splitIntoColumns(allTools);
             </svg>
           </button>
           <div class="absolute top-full left-0 pt-2 w-[600px] opacity-0 translate-y-2 pointer-events-none group-hover/dropdown:opacity-100 group-hover/dropdown:translate-y-0 group-hover/dropdown:pointer-events-auto transition-all duration-200 z-50">
-            <div class="bg-[#1F1F1F] border border-[#2E2E2E] rounded-2xl p-4 shadow-2xl">
-              <div class="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-[#4778F5] font-bold border-b border-[#2E2E2E] mb-3">Convert Utilities ({convertTools.length})</div>
+            <div class="nav-dropdown bg-[#1F1F1F] border border-[#2E2E2E] rounded-2xl p-4 shadow-2xl">
+              <div class="nav-dropdown-heading px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-[#4778F5] font-bold border-b border-[#2E2E2E] mb-3">Convert Utilities ({convertTools.length})</div>
               <div class="grid grid-cols-2 gap-x-6 gap-y-2">
                 <!-- Left Column -->
                 <div class="space-y-2">
                   {convertCols.left.map(tool => (
-                    <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
+                    <a href={`/tools/${tool.slug}`} class="nav-dropdown-item flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
                       <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
-                        <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
-                        <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
+                        <div class="nav-tool-name text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
+                        <div class="nav-tool-desc text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
                       </div>
                     </a>
                   ))}
@@ -144,11 +144,11 @@ const allToolsCols = splitIntoColumns(allTools);
                 <!-- Right Column -->
                 <div class="space-y-2">
                   {convertCols.right.map(tool => (
-                    <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
+                    <a href={`/tools/${tool.slug}`} class="nav-dropdown-item flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
                       <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
-                        <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
-                        <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
+                        <div class="nav-tool-name text-xs font-semibold text-[#EDEDED] group-hover/item:text-[#6E96FF] transition-colors">{tool.name}</div>
+                        <div class="nav-tool-desc text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
                       </div>
                     </a>
                   ))}
@@ -167,17 +167,17 @@ const allToolsCols = splitIntoColumns(allTools);
             </svg>
           </button>
           <div class="absolute top-full left-0 pt-2 w-[600px] opacity-0 translate-y-2 pointer-events-none group-hover/dropdown:opacity-100 group-hover/dropdown:translate-y-0 group-hover/dropdown:pointer-events-auto transition-all duration-200 z-50">
-            <div class="bg-[#1F1F1F] border border-[#2E2E2E] rounded-2xl p-4 shadow-2xl">
-              <div class="px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold border-b border-[#2E2E2E] mb-3">All Utilities ({allTools.length})</div>
+            <div class="nav-dropdown bg-[#1F1F1F] border border-[#2E2E2E] rounded-2xl p-4 shadow-2xl">
+              <div class="nav-dropdown-heading px-3 py-1.5 text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold border-b border-[#2E2E2E] mb-3">All Utilities ({allTools.length})</div>
               <div class="grid grid-cols-2 gap-x-6 gap-y-2">
                 <!-- Left Column -->
                 <div class="space-y-2">
                   {allToolsCols.left.map(tool => (
-                    <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
+                    <a href={`/tools/${tool.slug}`} class="nav-dropdown-item flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
                       <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
-                        <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-emerald-400 transition-colors">{tool.name}</div>
-                        <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
+                        <div class="nav-tool-name text-xs font-semibold text-[#EDEDED] group-hover/item:text-emerald-400 transition-colors">{tool.name}</div>
+                        <div class="nav-tool-desc text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
                       </div>
                     </a>
                   ))}
@@ -185,11 +185,11 @@ const allToolsCols = splitIntoColumns(allTools);
                 <!-- Right Column -->
                 <div class="space-y-2">
                   {allToolsCols.right.map(tool => (
-                    <a href={`/tools/${tool.slug}`} class="flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
+                    <a href={`/tools/${tool.slug}`} class="nav-dropdown-item flex items-start gap-3 p-2 rounded-xl hover:bg-[#2A2A2A] transition-colors group/item">
                       <ToolIcon {tool} size="sm" />
                       <div class="min-w-0 flex-1">
-                        <div class="text-xs font-semibold text-[#EDEDED] group-hover/item:text-emerald-400 transition-colors">{tool.name}</div>
-                        <div class="text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
+                        <div class="nav-tool-name text-xs font-semibold text-[#EDEDED] group-hover/item:text-emerald-400 transition-colors">{tool.name}</div>
+                        <div class="nav-tool-desc text-[10px] text-[#FFFFFF] leading-tight">{tool.shortDesc}</div>
                       </div>
                     </a>
                   ))}
@@ -205,7 +205,7 @@ const allToolsCols = splitIntoColumns(allTools);
     <div class="flex items-center gap-4">
       <!-- Theme Toggle -->
       <button id="theme-toggle" aria-label="Toggle Theme" class="w-10 h-10 rounded-xl bg-[#1F1F1F] border border-[#2E2E2E] text-[#EDEDED] flex items-center justify-center hover:bg-[#2A2A2A] transition-colors">
-        <img src="/moon.svg" alt="Theme Toggle" class="w-4 h-4 text-[#EDEDED] brightness-0 invert" />
+        <img id="theme-toggle-icon" src="/moon.svg" alt="Theme Toggle" class="w-4 h-4 text-[#EDEDED] brightness-0 invert" />
       </button>
 
       <!-- Hamburger Button -->
@@ -252,10 +252,23 @@ const allToolsCols = splitIntoColumns(allTools);
   }
 
   const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleIcon = document.getElementById('theme-toggle-icon') as HTMLImageElement;
+
+  function updateThemeIcon() {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (themeToggleIcon) {
+      themeToggleIcon.src = isDark ? '/sun.svg' : '/moon.svg';
+    }
+  }
+
+  updateThemeIcon();
+
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-      // Toggle theme logic if present, or toggle class
       document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateThemeIcon();
     });
   }
 </script>

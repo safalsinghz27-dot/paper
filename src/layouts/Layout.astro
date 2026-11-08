@@ -17,12 +17,20 @@ const { title = "PaperRepair — Professional Free Online Document & PDF Utiliti
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<script is:inline>
+			const theme = localStorage.getItem('theme');
+			if (theme === 'light') {
+				document.documentElement.classList.remove('dark');
+			} else {
+				document.documentElement.classList.add('dark');
+			}
+		</script>
 		<!-- Geist font from Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
 	</head>
-	<body class="bg-[#171717] text-white font-['Poppins',sans-serif] antialiased selection:bg-[#1b8ae6] selection:text-white min-h-screen flex flex-col justify-between">
+	<body class="bg-[#171717] dark:bg-[#171717] text-white font-['Poppins',sans-serif] antialiased selection:bg-[#1b8ae6] selection:text-white min-h-screen flex flex-col justify-between">
 		<slot />
 	</body>
 </html>

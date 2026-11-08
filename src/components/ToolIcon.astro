@@ -31,11 +31,12 @@ const getCategoryClass = (category: string): string => {
 };
 
 const categoryClass = getCategoryClass(tool.category);
+const tileClass = tool.category === 'PDF Tools' ? 'tile-pdf' : tool.category === 'Image Tools' ? 'tile-image' : 'tile-convert';
 const sizeConfig = sizeMap[size] || sizeMap.md;
 ---
 
 <div
-  class={`${sizeConfig.tile} ${sizeConfig.radius} flex items-center justify-center shrink-0 transition-transform will-change-transform bg-[rgba(36,36,36,0.5)]`}
+  class={`${sizeConfig.tile} ${sizeConfig.radius} flex items-center justify-center shrink-0 transition-transform will-change-transform bg-[rgba(36,36,36,0.5)] ${tileClass}`}
   aria-hidden="true"
 >
   <img
@@ -61,23 +62,54 @@ const sizeConfig = sizeMap[size] || sizeMap.md;
     filter: brightness(0) saturate(100%) invert(60%) sepia(95%) saturate(800%) hue-rotate(210deg);
   }
 
-  /* Light theme backgrounds */
-  @media (prefers-color-scheme: light) {
-    div {
-      background-color: #F1F4FB;
-      border: 1px solid #E4E8F5;
-    }
+  /* Light theme container backgrounds (50% transparent color-matched) */
+  html:not(.dark) .tile-pdf {
+    background-color: rgba(217, 45, 51, 0.5) !important;
+    border: none !important;
+  }
+  html:not(.dark) .tile-image {
+    background-color: rgba(109, 74, 224, 0.5) !important;
+    border: none !important;
+  }
+  html:not(.dark) .tile-convert {
+    background-color: rgba(31, 87, 230, 0.5) !important;
+    border: none !important;
+  }
 
-    /* Adjust filters for light theme - different base colors needed */
-    .icon-pdf {
+  /* Adjust filters for light theme */
+  html:not(.dark) .icon-pdf {
+    filter: brightness(0) saturate(100%) invert(29%) sepia(74%) saturate(1200%) hue-rotate(352deg);
+  }
+
+  html:not(.dark) .icon-image {
+    filter: brightness(0) saturate(100%) invert(22%) sepia(78%) saturate(1700%) hue-rotate(260deg);
+  }
+
+  html:not(.dark) .icon-convert {
+    filter: brightness(0) saturate(100%) invert(18%) sepia(84%) saturate(1600%) hue-rotate(220deg);
+  }
+
+  /* Fallback for prefers-color-scheme: light when .dark class is not present */
+  @media (prefers-color-scheme: light) {
+    :root:not(.dark) .tile-pdf, body:not(.dark) .tile-pdf {
+      background-color: rgba(217, 45, 51, 0.5) !important;
+      border: none !important;
+    }
+    :root:not(.dark) .tile-image, body:not(.dark) .tile-image {
+      background-color: rgba(109, 74, 224, 0.5) !important;
+      border: none !important;
+    }
+    :root:not(.dark) .tile-convert, body:not(.dark) .tile-convert {
+      background-color: rgba(31, 87, 230, 0.5) !important;
+      border: none !important;
+    }
+    :root:not(.dark) .icon-pdf, body:not(.dark) .icon-pdf {
       filter: brightness(0) saturate(100%) invert(29%) sepia(74%) saturate(1200%) hue-rotate(352deg);
     }
-
-    .icon-image {
+    :root:not(.dark) .icon-image, body:not(.dark) .icon-image {
       filter: brightness(0) saturate(100%) invert(22%) sepia(78%) saturate(1700%) hue-rotate(260deg);
     }
-
-    .icon-convert {
+    :root:not(.dark) .icon-convert, body:not(.dark) .icon-convert {
       filter: brightness(0) saturate(100%) invert(18%) sepia(84%) saturate(1600%) hue-rotate(220deg);
     }
   }

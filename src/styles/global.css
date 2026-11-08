@@ -9,26 +9,142 @@
   --color-text: #172033;
   --color-border: #DFE6F2;
 
-  /* Tool icon glyph colors (dark theme) - stroke-based icons on neutral tiles */
-  --icon-glyph-pdf-dark: #FF6B6F;      /* PDF Tools - dark red */
-  --icon-glyph-image-dark: #A58BFF;    /* Image Tools - dark purple */
-  --icon-glyph-convert-dark: #5B8CFF;  /* Convert Tools - dark blue */
+  /* Tool icon glyph colors (dark theme) */
+  --icon-glyph-pdf-dark: #FF6B6F;
+  --icon-glyph-image-dark: #A58BFF;
+  --icon-glyph-convert-dark: #5B8CFF;
 
-  /* Tool icon glyph colors (light theme) - stroke-based icons on neutral tiles */
-  --icon-glyph-pdf-light: #D92D33;     /* PDF Tools - light red */
-  --icon-glyph-image-light: #6D4AE0;   /* Image Tools - light purple */
-  --icon-glyph-convert-light: #1F57E6; /* Convert Tools - light blue */
+  /* Tool icon glyph colors (light theme) */
+  --icon-glyph-pdf-light: #D92D33;
+  --icon-glyph-image-light: #6D4AE0;
+  --icon-glyph-convert-light: #1F57E6;
 }
 
 @layer base {
   body {
-    background-color: var(--color-background);
-    color: var(--color-text);
+    background-color: #171717;
+    color: #FFFFFF;
     font-family: 'Poppins', sans-serif;
   }
 }
 
-/* ===== New category card colours (safe, scoped) ===== */
+/* ==========================================
+   DARK MODE (Default / When .dark is present)
+   ========================================== */
+.dark body {
+  background-color: #171717 !important;
+  color: #FFFFFF !important;
+}
+
+/* ==========================================
+   LIGHT MODE (When .dark is NOT on html)
+   ========================================== */
+html:not(.dark) body {
+  background-color: #D7E2F7 !important;
+  color: #171717 !important;
+}
+
+html:not(.dark) header,
+html:not(.dark) footer,
+html:not(.dark) div.bg-\[\#171717\] {
+  background-color: #D7E2F7 !important;
+  color: #171717 !important;
+  border-color: #CBD5E1 !important;
+}
+
+/* The Four Specified Sections use #E5EDFC in Light Mode */
+html:not(.dark) .trust-section,
+html:not(.dark) .popular-tools-section,
+html:not(.dark) .why-choose-section,
+html:not(.dark) .faq-section {
+  background-color: #E5EDFC !important;
+  color: #171717 !important;
+  border-color: #CBD5E1 !important;
+}
+
+/* Cards inside sections / faq items in Light Mode */
+html:not(.dark) .faq-item,
+html:not(.dark) .tool-card {
+  background-color: #FFFFFF !important;
+  color: #171717 !important;
+  border-color: #CBD5E1 !important;
+}
+
+html:not(.dark) .hub-card {
+  background-color: #D7E2F7 !important;
+  border-color: #B8C9E5 !important;
+}
+
+html:not(.dark) .hub-card:hover {
+  background-color: #D7E5FA !important;
+  border-color: #1C67CA !important;
+}
+
+html:not(.dark) .hub-card h3 {
+  color: #172554 !important;
+}
+
+html:not(.dark) .hub-card:hover h3 {
+  color: #123F80 !important;
+}
+
+html:not(.dark) .hub-card p {
+  color: #475569 !important;
+}
+
+html:not(.dark) .hub-card:hover p {
+  color: #334155 !important;
+}
+
+html:not(.dark) .hub-card span.text-\[10px\] {
+  color: #1C67CA !important;
+}
+
+
+/* Text color adaptations for Light Mode */
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6,
+html:not(.dark) strong,
+html:not(.dark) span.text-white,
+html:not(.dark) .text-\[\#EDEDED\],
+html:not(.dark) .text-white {
+  color: #171717 !important;
+}
+
+html:not(.dark) p,
+html:not(.dark) span,
+html:not(.dark) a,
+html:not(.dark) label,
+html:not(.dark) li,
+html:not(.dark) .text-\[\#7f8c99\],
+html:not(.dark) .text-\[\#A3A3A3\],
+html:not(.dark) .text-\[\#FFFFFF\],
+html:not(.dark) .text-white\/90,
+html:not(.dark) .text-white\/95,
+html:not(.dark) .text-white\/85,
+html:not(.dark) .text-white\/80,
+html:not(.dark) .text-\[\#6B8DD6\] {
+  color: #626B7A !important;
+}
+
+/* Inputs, dropdowns, search bars in Light Mode */
+html:not(.dark) input,
+html:not(.dark) select,
+html:not(.dark) textarea {
+  background-color: #FFFFFF !important;
+  color: #171717 !important;
+  border-color: #CBD5E1 !important;
+}
+
+html:not(.dark) input::placeholder {
+  color: #626B7A !important;
+}
+
+/* ===== Category card colours preservation (safe, scoped) ===== */
 .cat-cards {
   --pdf-a:#1fa85a;  --pdf-b:#0d7a3a;  --pdf-strip:rgba(31,168,90,.16);  --pdf-txt:#6ee7a1;
   --img-a:#b45cf2;  --img-b:#7f35d6;  --img-strip:rgba(180,92,242,.16); --img-txt:#e0b3ff;
@@ -36,17 +152,14 @@
   --all-a:#2aa3f5;  --all-b:#1272c4;  --all-strip:rgba(42,163,245,.16); --all-txt:#8fd3ff;
 }
 
-/* PDF */
 .cat-cards .cat-card.pdf .cat-top { background:#1fa85a; background:linear-gradient(135deg,var(--pdf-a),var(--pdf-b)); }
 .cat-cards .cat-card.pdf .cat-featured { background:var(--pdf-strip); }
 .cat-cards .cat-card.pdf .cat-featured strong { color:var(--pdf-txt); }
 
-/* Image */
 .cat-cards .cat-card.img .cat-top { background:#b45cf2; background:linear-gradient(135deg,var(--img-a),var(--img-b)); }
 .cat-cards .cat-card.img .cat-featured { background:var(--img-strip); }
 .cat-cards .cat-card.img .cat-featured strong { color:var(--img-txt); }
 
-/* Convert (amber: dark text) */
 .cat-cards .cat-card.cnv .cat-top { background:#ffc21a; background:linear-gradient(135deg,var(--cnv-a),var(--cnv-b)); }
 .cat-cards .cat-card.cnv .cat-top h3,
 .cat-cards .cat-card.cnv .cat-top p,
@@ -54,11 +167,105 @@
 .cat-cards .cat-card.cnv .cat-featured { background:var(--cnv-strip); }
 .cat-cards .cat-card.cnv .cat-featured strong { color:var(--cnv-txt); }
 
-/* All */
 .cat-cards .cat-card.all .cat-top { background:#2aa3f5; background:linear-gradient(135deg,var(--all-a),var(--all-b)); }
 .cat-cards .cat-card.all .cat-featured { background:var(--all-strip); }
 .cat-cards .cat-card.all .cat-featured strong { color:var(--all-txt); }
 
+/* Theme-specific image switching */
+.hero-img-dark, .why-img-dark { display: none; }
+.hero-img-light, .why-img-light { display: block; }
+
+html.dark .hero-img-dark,
+html.dark .why-img-dark { display: block; }
+
+html.dark .hero-img-light,
+html.dark .why-img-light { display: none; }
+
+html:not(.dark) .why-img-light {
+  object-fit: contain !important;
+  padding: 8px !important;
+  background-color: #E5EDFC !important;
+}
+html:not(.dark) .cat-card-top,
+html:not(.dark) .cat-card-top h3,
+html:not(.dark) .cat-card-top p,
+html:not(.dark) .cat-card-top span {
+  color: #FFFFFF !important;
+}
+
+html:not(.dark) .hero-search-wrapper {
+  background-color: transparent !important;
+  border-color: #CBD5E1 !important;
+}
+
+html:not(.dark) .hero-search-input {
+  background-color: transparent !important;
+  color: #171717 !important;
+}
+
+html:not(.dark) .hero-search-input::placeholder {
+  color: #626B7A !important;
+}
+
+html:not(.dark) .hero-search-wrapper svg {
+  color: #626B7A !important;
+}
+
+html:not(.dark) .trust-section div.w-10.h-10 {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+html:not(.dark) .trust-section img {
+  filter: brightness(0) invert(1) brightness(0.09) !important;
+}
 
 
+/* ==========================================
+   LIGHT MODE: NAVBAR DROPDOWNS READABILITY
+   ========================================== */
+html:not(.dark) .nav-dropdown {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+}
+
+html:not(.dark) .nav-dropdown-heading {
+  color: #171717 !important;
+  border-color: #CBD5E1 !important;
+}
+
+html:not(.dark) .nav-dropdown-item:hover {
+  background-color: #F1F5F9 !important;
+}
+
+html:not(.dark) .nav-tool-name {
+  color: #171717 !important;
+}
+
+html:not(.dark) .nav-tool-desc {
+  color: #626B7A !important;
+}
+
+/* Popular Tools icon container backgrounds in Light Mode (50% opacity) */
+html:not(.dark) .popular-tile-pdf {
+  background-color: rgba(217, 45, 51, 0.5) !important;
+}
+html:not(.dark) .popular-tile-image {
+  background-color: rgba(109, 74, 224, 0.5) !important;
+}
+html:not(.dark) .popular-tile-convert {
+  background-color: rgba(31, 87, 230, 0.5) !important;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(.dark) .popular-tile-pdf, body:not(.dark) .popular-tile-pdf {
+    background-color: rgba(217, 45, 51, 0.5) !important;
+  }
+  :root:not(.dark) .popular-tile-image, body:not(.dark) .popular-tile-image {
+    background-color: rgba(109, 74, 224, 0.5) !important;
+  }
+  :root:not(.dark) .popular-tile-convert, body:not(.dark) .popular-tile-convert {
+    background-color: rgba(31, 87, 230, 0.5) !important;
+  }
+}
 
